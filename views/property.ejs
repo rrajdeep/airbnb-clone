@@ -1,0 +1,750 @@
+<%- include('header') -%>
+
+
+    <nav class="conatainer mt-3">
+        <div class="navigationBar">
+            <!-- logo -->
+            <div class="logo">
+                <% if(Object.keys(user).length === 0) { %>
+                <a href="/"><i class="fa-brands fa-airbnb"></i>airbnb</a>
+                <% } else { %>
+                <a href="/myairbnb"><i class="fa-brands fa-airbnb"></i>airbnb</a>
+                <% } %>
+            </div>
+            <!-- search box -->
+            <div class="search-box">
+                <span class="searchBox-span">Anywhere</span><span>|</span>
+                <span class="searchBox-span">Any week</span><span>|</span>
+                <span class="searchBox-span" style="color: grey; cursor: pointer;">Add guests</span>
+                <span class="searchBox-span search-icon"><i class="fa-solid fa-magnifying-glass"></i></span>
+            </div>
+            <!-- Become Host -->
+            <div style="display: flex; justify-content: space-around;">
+                <div class="becomeHost">
+                    <button class="host" id="becomeHostBtn" type="button"><a
+                            style="color: inherit; text-decoration: none;" href="/registerproperty">Become a
+                            host</a></button>
+                </div>
+                <div class="globeBtn">
+                    <button class="host" type="button"><i class="fa-solid fa-globe"></i></button>
+                </div>
+
+                <!--Login / signup button  -->
+                <div class="loginSignup">
+                    <button class="loginSignupBtn" type="button">
+                        <span><i class="fa-solid fa-bars"></i></span>
+                        <!-- <span style="margin-left: 10px;"><i class="fa-solid fa-user"></i></span> -->
+
+                        <% if(Object.keys(user).length === 0) { %>
+                        <span style="margin-left: 10px;"><i class="fa-solid fa-user"></i></span>
+                        <% } else { %>
+                        <span style="margin-left: 10px;">
+                            <img src="data:image/<%=user.img.contentType%>;base64,<%=user.img.data.toString('base64')%>"
+                                alt="profile" style="width: 2rem; height: 2rem; border-radius: 50%;">
+                        </span>
+                        <% } %>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <hr>
+
+    <!-- login sign up pop up on button click -->
+    <div id="popupDiv">
+        <ul class="loginPopup">
+            <% if(Object.keys(user).length === 0) { %>
+            <li><button><a style="color: inherit; text-decoration: none;" href="/">Home</a></button></li>
+            <li><button><a style="color: inherit; text-decoration: none;" href="/register">Sign up</a></button></li>
+            <li><button><a style="color: inherit; text-decoration: none;" href="/login">Login</a></button></li>
+            <% } else { %>
+            <li><button><a style="color: inherit; text-decoration: none;" href="/myairbnb">Home</a></button></li>
+            <li><button><a style="color: inherit; text-decoration: none;" href="/mybookings">My bookings</a></button>
+            </li>
+            <li><button><a style="color: inherit; text-decoration: none;" href="/logout">Logout</a></button></li>
+            <% } %>
+            <hr>
+            <li><button>Host your home</button></li>
+            <li><button>Host an experience</button></li>
+            <li><Button><a style="color: inherit; text-decoration: none;" href="/help">Help</a></Button></li>
+        </ul>
+    </div>
+    <div class="px-5" style="padding-left: 5rem; padding-right: 5rem">
+        <div>
+            <h1><%=property.propertyName%></h1>
+        </div>
+        <div class="propertyHead">
+            <div>
+                <span>&#9733; </span>
+                <span>Rating &#8226;</span>
+                <% if(property.review.length == 1) { %>
+                <span><%=property.review.length%></span><span> Review &#8226;</span>
+                <% } else {  %>
+                <span><%=property.review.length%></span><span> Reviews &#8226;</span>
+                <% }  %>
+
+                <span><%=property.city%>, </span><span><%=property.state%>, </span><span><%=property.country%></span>
+            </div>
+            <div>
+                <button class="save-share-btn"><i class="fa-solid fa-arrow-up-from-bracket"></i><span
+                        style="padding-left: 5px;">Share</span></button>
+                <button class="save-share-btn"><i class="fa-regular fa-heart"></i><span
+                        style="padding-left: 5px;">Save</span></button>
+            </div>
+        </div>
+    </div>
+
+    <div class="mt-3 px-5">
+        <div class="imgContainer">
+            <div class="mainImage">
+                <img src="data:image/<%=property.img[0].contentType%>;base64,<%=property.img[0].data.toString('base64')%>"
+                    alt="property-image1">
+            </div>
+            <div class="sideImages">
+                <div class="sideImgDiv">
+                    <img src="data:image/<%=property.img[1].contentType%>;base64,<%=property.img[1].data.toString('base64')%>"
+                        alt="property-image2">
+                </div>
+
+                <div class="sideImgDiv rightTopImg">
+                    <img src="data:image/<%=property.img[2].contentType%>;base64,<%=property.img[2].data.toString('base64')%>"
+                        alt="property-image3">
+                </div>
+                <div class="sideImgDiv">
+                    <img src="data:image/<%=property.img[3].contentType%>;base64,<%=property.img[3].data.toString('base64')%>"
+                        alt="property-image4">
+                </div>
+                <div class="sideImgDiv rightBottomImg" style="position: relative;">
+                    <img src="data:image/<%=property.img[0].contentType%>;base64,<%=property.img[0].data.toString('base64')%>"
+                        alt="property-image5">
+                    <div
+                        style="position: absolute !important; z-index: 3 !important; bottom: 24px !important; right: 24px !important">
+                        <button class="showAllPhotosBtn"><i class="fa-solid fa-grip"></i><span
+                                style="margin-left: 10px;">Show all photos</span></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="px-5" style="display: grid; grid-template-columns: auto auto; gap: 1rem;">
+        <div class="mt-3">
+            <div>
+                <h2><%=property.propertyName%> <span>hosted by <span><%=property.owner%></span></span></h2>
+            </div>
+            <div>
+                <ul class="list-inline" style="display: inline">
+                    <li class="list-inline-item"><%=property.guests%> Guests</li>
+                    <li class="list-inline-item"><span>&#8226;</span> <%=property.bedrooms%> Bedroom</li>
+                    <li class="list-inline-item"><span>&#8226;</span> <%=property.beds%> Beds</li>
+                    <li class="list-inline-item"><span>&#8226;</span> <%=property.bathrooms%> Bathroom</li>
+                </ul>
+            </div>
+        </div>
+        <div class="mt-3">
+            <img class="hostProfile"
+                src="data:image/<%=hostProfile.img.contentType%>;base64,<%=hostProfile.img.data.toString('base64')%>"
+                alt="host profile image">
+        </div>
+    </div>
+
+    <div class="px-5">
+        <hr>
+    </div>
+
+    <div class="px-5" style="display: grid; grid-template-columns: auto auto; gap: 2rem;">
+
+        <div>
+
+            <div>
+                <div class="placePerks">
+                    <div style="font-size: 1.5rem;">
+                        <i class="fa-solid fa-key"></i>
+                    </div>
+                    <div class="perk">
+                        <div>
+                            <b><span>Great check-in experience</span></b>
+                        </div>
+                        <div>
+                            <span>90% of recent guests gave the check-in process a 5-star rating.</span>
+                        </div>
+                    </div>
+                </div>
+                <% if(property.parking) { %>
+                <div class="placePerks">
+                    <div style="font-size: 1.5rem;">
+                        <i class="fa-solid fa-square-parking"></i>
+                    </div>
+                    <div class="perk">
+                        <div>
+                            <b><span>Park for free</span></b>
+                        </div>
+                        <div>
+                            <span>This is one of the few places in the area with free parking.</span>
+                        </div>
+                    </div>
+                </div>
+                <% } %>
+                <div class="placePerks">
+                    <div style="font-size: 1.5rem;">
+                        <i class="fa-solid fa-calendar-xmark"></i>
+                    </div>
+                    <div class="perk">
+                        <div>
+                            <b><span>Free cancellation</span></b>
+                        </div>
+                        <div>
+                            <span>Free cancellation 3 days prior to check-in</span>
+                        </div>
+                    </div>
+                </div>
+                <hr>
+            </div>
+
+
+
+            <div>
+                <h2><b><span style="color:#FF385C;">air</span>cover</b></h2>
+                <p>Every booking includes free protection from Host cancellations, listing inaccuracies, and other
+                    issues
+                    like
+                    trouble checking in.</p>
+                <a style="text-decoration:underline; color: black;" href="">Learn more</a>
+                <hr>
+            </div>
+
+            <div>
+                <h2>What this place offers</h2>
+                <div class="amenitiesAndBookingForm">
+                    <div class="amenities">
+
+                        <div style="display: grid; grid-template-columns: auto auto; gap: 1.5rem;">
+                            <div>
+                                <% if(property.gardenview) { %>
+                                <div><i class="fa-solid fa-tree" style="font-size: 24px; color:#222222"></i><span
+                                        style="padding-left: 10px;">Garden view</span></div>
+                                <% } else {  %>
+                                <div><i class="fa-solid fa-tree" style="font-size: 24px; color:#222222"></i><span
+                                        style="text-decoration: line-through; padding-left: 10px;">Garden
+                                        view</span></div>
+                                <% } %>
+
+                                <% if(property.beachAccess) { %>
+                                <div><i class="fa-solid fa-umbrella-beach"
+                                        style="font-size: 24px; color:#222222"></i><span style="padding-left: 10px;">
+                                        Beach access - Beachfront</span></div>
+                                <% } else {  %>
+                                <div><i class="fa-solid fa-umbrella-beach"
+                                        style="font-size: 24px; color:#222222"></i><span
+                                        style="text-decoration: line-through; padding-left: 10px;">Beach access
+                                        - Beachfront</span></div>
+                                <% } %>
+
+                                <% if(property.wifi) { %>
+                                <div><i class="fa-solid fa-wifi" style="font-size: 24px; color:#222222"></i><span
+                                        style="padding-left: 10px;">Wi-fi</span></div>
+                                <% } else {  %>
+                                <div><i class="fa-solid fa-wifi" style="font-size: 24px; color:#222222"></i><span
+                                        style="text-decoration: line-through; padding-left: 10px;">wi-fi</span></div>
+                                <% } %>
+
+                                <% if(property.parking) { %>
+                                <div><i class="fa-solid fa-car-rear" style="font-size: 24px; color:#222222"></i><span
+                                        style="padding-left: 10px;">Free parking on premises</span></div>
+                                <% } else {  %>
+                                <div><i class="fa-solid fa-car-rear" style="font-size: 24px; color:#222222"></i><span
+                                        style="text-decoration: line-through; padding-left: 10px;">Free parking on
+                                        premises</span></div>
+                                <% } %>
+
+                                <% if(property.pool) { %>
+                                <div><i class="fa-solid fa-water-ladder"
+                                        style="font-size: 24px; color:#222222"></i><span
+                                        style="padding-left: 10px;">Swiming pool</span></div>
+                                <% } else {  %>
+                                <div><i class="fa-solid fa-water-ladder"
+                                        style="font-size: 24px; color:#222222"></i><span
+                                        style="text-decoration: line-through; padding-left: 10px;">Swiming
+                                        pool</span></div>
+                                <% } %>
+
+                                <% if(property.mountainview) { %>
+                                <div><i class="fa-solid fa-mountain-sun"
+                                        style="font-size: 24px; color:#222222"></i><span
+                                        style="padding-left: 10px;">Mountain view </span></div>
+                                <% } else {  %>
+                                <div><i class="fa-solid fa-mountain-sun"
+                                        style="font-size: 24px; color:#222222"></i><span
+                                        style="text-decoration: line-through; padding-left: 10px;">Mountain
+                                        view</span></div>
+                                <% } %>
+                            </div>
+
+                            <div>
+                                <% if(property.kitchen) { %>
+                                <div><i class="fa-solid fa-kitchen-set"
+                                        style="font-size: 24px; color:#222222 "></i><span
+                                        style="padding-left: 10px;">Kitchen</span></div>
+                                <% } else {  %>
+                                <div><i class="fa-solid fa-kitchen-set"
+                                        style="font-size: 24px; color:#222222 "></i><span
+                                        style="text-decoration: line-through; padding-left: 10px;">Kitchen</span></div>
+                                <% } %>
+
+                                <% if(property.tv) { %>
+                                <div><i class="fa-solid fa-tv" style="font-size: 24px; color:#222222"></i><span
+                                        style="padding-left: 10px;">HDTV with standard cable/satellite TV</span></div>
+                                <% } else {  %>
+                                <div><i class="fa-solid fa-tv" style="font-size: 24px; color:#222222"></i><span
+                                        style="text-decoration: line-through; padding-left: 10px;">HDTV with standard
+                                        cable/satellite,
+                                        cable/satellite TV</span>
+                                </div>
+                                <% } %>
+
+                                <% if(property.petsAllowed) { %>
+                                <div><i class="fa-solid fa-paw" style="font-size: 24px; color:#222222"></i><span
+                                        style="padding-left: 10px;">Pets Allowed</span></div>
+                                <% } else {  %>
+                                <div><i class="fa-solid fa-paw" style="font-size: 24px; color:#222222"></i><span
+                                        style="text-decoration: line-through; padding-left: 10px;">Pets Allowed</span>
+                                </div>
+                                <% } %>
+
+                                <% if(property.airconditioning) { %>
+                                <div><i class="fa-regular fa-snowflake" style="font-size: 24px; color:#222222"></i><span
+                                        style="padding-left: 10px;">AC - split-type ductless system</span></div>
+                                <% } else {  %>
+                                <div><i class="fa-regular fa-snowflake" style="font-size: 24px; color:#222222"></i><span
+                                        style="text-decoration: line-through; padding-left: 10px;">AC -
+                                        split-type ductless system</span></div>
+                                <% } %>
+
+                                <% if(property.workspace) { %>
+                                <div><i class="fa-solid fa-house-laptop"
+                                        style="font-size: 24px; color:#222222"></i><span
+                                        style="padding-left: 10px;">Dedicated workspace</span></div>
+                                <% } else {  %>
+                                <div><i class="fa-solid fa-house-laptop"
+                                        style="font-size: 24px; color:#222222"></i><span
+                                        style="text-decoration: line-through; padding-left: 10px;">Dedicated
+                                        workspace</span></div>
+                                <% } %>
+
+                                <% if(property.alarm) { %>
+                                <div><i class="fa-regular fa-bell" style="font-size: 24px; color:#222222"></i><span
+                                        style="padding-left: 10px;">Alarm</span></div>
+                                <% } else {  %>
+                                <div><i class="fa-regular fa-bell" style="font-size: 24px; color:#222222"></i><span
+                                        style="text-decoration: line-through; padding-left: 10px;">Alarm</span></div>
+                                <% } %>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <br>
+
+            <div>
+                <button type="button" class="btn btn-outline-secondary">Show all 23 amenities</button>
+            </div>
+            
+        </div>
+
+        <div>
+
+
+            <div class="booking-div mt-3">
+                <div class="inside-booking-div">
+                    <div>
+                        <h3><b><span>&#8377</span><span><%=property.pricing%></span></b> night</h3>
+                    </div>
+                    <form action="/property/<%=property._id%>" method="POST">
+                        <div class="p-2" style="border: 1px solid grey; border-radius: 10px; margin: 5px;">
+                            <div class="row g-2 mb-3">
+                                <div class="col">
+                                    <label class="date-label" for="checkin">CHECK-IN</label><br>
+                                    <input type="date" class="form-control" name="checkin" id="checkindate" required>
+                                </div>
+                                <div class="col">
+                                    <label class="date-label" for="checkout">CHECK-OUT</label><br>
+                                    <input type="date" class="form-control" name="checkout" id="checkoutdate" required>
+                                </div>
+                            </div>
+                            <div class="row g-2 mb-3">
+                                <div class="col-sm">
+                                    <!-- <label for="noOfRooms">Rooms</label><br> -->
+                                    <input type="number" class="form-control" name="noOfRooms" id="numOfRooms" min="1"
+                                        max="<%=property.bedrooms%>" required placeholder="Rooms">
+                                </div>
+                                <div class="col-sm">
+                                    <!-- <label for="noOfGuests">Guest</label><br> -->
+                                    <input type="number" class="form-control" name="noOfGuests" id="numOfGuests" min="1"
+                                        max="<%=property.guests%>" required placeholder="Guests">
+                                </div>
+                            </div>
+                            <input type="hidden" name="propertyBooked" value=<%=property._id%>>
+                            <input type="hidden" name="" id="charges" value=<%=property.pricing%>>
+                            <button class="claculateBtn" type="button" id="calculate">Calculate</button>
+                        </div>
+                        <hr>
+                        <!-- before reserve button -->
+                        <div><span>You won't be charged yet</span></div>
+
+                        <div class="tempBooking">
+                            <div class="tempBookingItem1">
+
+                                <p>Number of rooms</p>
+                                <p><span>&#8377</span><%=property.pricing%> x <span id="nights">1</span> nights</p>
+                                <p><b>Total before taxes</b></p>
+                            </div>
+                            <div class="tempBookingItem2">
+
+                                <p>: <span id="rooms"></span></p>
+                                <p>: <span id="subtotal"></span></p>
+                                <p><b>: <span id="total"></span></b></p>
+                            </div>
+                        </div>
+                        <hr>
+
+                        <div>
+                            <% if(Object.keys(user).length === 0) { %>
+                            <button class="reserveBtn" type="button"
+                                onclick="window.alert('Please Login First')">
+                                <div class="reserveBtnDiv">Reserve</div>
+                            </button>
+                            <% } else { %>
+                            <button class="reserveBtn" type="submit">
+                                <div class="reserveBtnDiv">Reserve</div>
+                            </button>
+                            <% } %>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+    <!-- <div class="reviewDiv">
+        <a href="/review/<%=property._id%>">Write a review</a>
+    </div> -->
+    <div class="p-5">
+        <div>
+            <h5>Reviews</h5>
+        </div>
+        <div class="row">
+            <% if(property.review.length == 0) {  %>
+                <div>
+                    <p><b>No reviews yet.</b></p>
+                </div>
+                <% } else { %>
+                <% for(let i = 0; i < property.review.length; i++) {  %>
+                <div class="col">
+                    <div style="display: flex; gap: 10px;">
+                        <div class="reviewUserProfile">
+                            <i class="fa-solid fa-user userProfileIcon"></i>
+                        </div>
+                        <div>
+                            <div>
+                                <div><%=property.review[i].userName%></div>
+                                <div><span>&#9733; </span><%=property.review[i].starRating%></div>
+                                <!-- <p><%=property.review[i].userName%></p>
+                                <p><span><%=property.review[i].starRating%></span></p> -->
+                            </div>
+                            <div>
+                                <p><span><%=property.review[i].reviewContet%></span></p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- <div>
+                        <p><span><%=property.review[i].reviewContet%></span></p>
+                    </div> -->
+                </div>
+                <% } %>
+                <% } %>
+        </div>
+    </div>
+
+    <div class="reviewDiv py-3 px-5">
+        <a href="/review/<%=property._id%>"><button class="btn btn-sm btn-danger">Write a review...<i
+                    class="fa-solid fa-pencil"></i></button></a>
+    </div>
+
+    <div class="px-5">
+        <hr>
+    </div>
+
+
+    <!-- about host -->
+    <div class="aboutHostDiv mt-3 px-5">
+        <div style="display: flex; gap: 20px;">
+            <div>
+                <img class="hostProfile"
+                    src="data:image/<%=hostProfile.img.contentType%>;base64,<%=hostProfile.img.data.toString('base64')%>"
+                    alt="host profile image">
+            </div>
+            <div>
+                <div>
+                    <h2>Hosted by <span><%=property.owner%></span></h2>
+                </div>
+                <div>
+                    <span>Lorem ipsum dolor sit</span>
+                </div>
+            </div>
+        </div>
+        <div class="row mt-3" style="display: grid; grid-template-columns: auto auto; gap: 2rem;">
+            <div class="col">
+                <div style="display: grid; grid-template-columns: auto auto auto;">
+                    <div>&#9733; <span><%=property.review.length%></span> <span>Reviews</span></div>
+                    <div><i class="fa-solid fa-circle-check"></i> <span>Identity verified</span></div>
+                    <div><i class="fa-solid fa-medal"></i> <span>Super Host</span></div>
+                </div>
+
+                <div class="mt-3">
+                    <div class="mt-3">
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolore dignissimos rerum,
+                            consequuntur
+                            iusto reprehenderit dolorem neque! Adipisci autem, maxime obcaecati aspernatur ut deleniti
+                            officiis enim aut repellat, expedita minus id! <span>...<b>Read more</b></span></p>
+                    </div>
+                    <div class="mt-3">
+                        <p><b>During your stay</b></p>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Velit est aut iste beatae. Qui
+                            maiores minus odio vero eaque explicabo!</p>
+                    </div>
+                    <div class="mt-3">
+                        <p><span><b><%=property.owner%> is a Superhost</b></span></p>
+                        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Perferendis, officia tempore.
+                            Minima rerum omnis soluta, quae rem animi voluptas ipsam!</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-3" class="col">
+                <div class="mt-3">
+                    <p>Languages: English, Hindi, Punjabi</p>
+                    <p>Response Rate: 100%</p>
+                    <p>Response Time: within an hour</p>
+                </div>
+                <div class="mt-3">
+                    <button class="btn btn-outline-secondary"><span style="padding-left: 5px;">Contact host</span></button>
+                </div>
+                <div class="mt-3" style="display: flex; gap: 10px; justify-content: center;">
+                    <div><i class="fa-solid fa-user-shield"></i></div>
+                    <div>To protect your payment, never transfer money or communicate outside of the Airbnb website or
+                        app.</div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="mt-3 px-5">
+        <hr>
+    </div>
+
+    <div class="thingsToKnow mt-3 px-5">
+        <div>
+            <h2>Things to know</h2>
+        </div>
+        <div class="row">
+            <div class="col">
+                <h3>House rules</h3>
+                <div><span><i class="fa-solid fa-clock"></i></span> Check out: 10:00 am</div>
+                <div><span><i class="fa-solid fa-door-closed"></i> </span> Self check-in with keypad</div>
+                <div><span><i class="fa-solid fa-ban-smoking"></i></span> No smoking</div>
+                <div><span><i class="fa-solid fa-circle-xmark"></i></span> No parties or events</div>
+            </div>
+            <div class="col">
+                <h3>Health & safety</h3>
+                <div><span><i class="fa-solid fa-virus-covid"></i></span> Airbnb's COVID-19 safety practices apply</div>
+                <div><span><i class="fa-solid fa-circle-exclamation"></i></span> Carbon monoxide alarm not reported
+                </div>
+                <div><span><i class="fa-solid fa-circle-exclamation"></i></span> Smoke alarm</div>
+            </div>
+            <div class="col">
+                <h3>Cancellation policy</h3>
+                <div>Free cancellation for 48 hours.</div>
+                <div>Review the Host’s full cancellation policy which applies even if you cancel for illness or
+                    disruptions caused by COVID-19.</div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Help and support -->
+    <div class="row mt-3 p-5" style="background-color: #f7f7f7; border-top: 1px solid rgb(189, 189, 189);">
+        <div class="col">
+            <h3>Support</h3>
+            <ul style="list-style-type: none; padding-left: 0;">
+                <li class="mt-3">Help Centre</li>
+                <li class="mt-3">AirCover</li>
+                <li class="mt-3">Safety information</li>
+                <li class="mt-3">Cancellation options</li>
+                <li class="mt-3">Our COVID-19 Response</li>
+            </ul>
+            <!-- <div><a href="">Help Centre</a></div>
+            <div><a href="">AirCover</a></div>
+            <div><a href="">Safety information</a></div>
+            <div><a href="">Cancellation options</a></div>
+            <div><a href="">Our COVID-19 Response</a></div> -->
+        </div>
+        <div class="col">
+            <h3>Community</h3>
+            <ul style="list-style-type: none; padding-left: 0;">
+                <li class="mt-3">Airbnb.org: disaster relief housing</li>
+                <li class="mt-3">Support refugees</li>
+                <li class="mt-3">Combating discrimination</li>
+
+            </ul>
+            <!-- <div><a href="">Airbnb.org: disaster relief housing</a></div>
+            <div><a href="">Support refugees</a></div>
+            <div><a href="">Combating discrimination</a></div> -->
+        </div>
+        <div class="col">
+            <h3>Hosting</h3>
+            <ul style="list-style-type: none; padding-left: 0;">
+                <li class="mt-3">Try hosting</li>
+                <li class="mt-3">AirCover for Hosts</li>
+                <li class="mt-3">Explore hosting resources</li>
+                <li class="mt-3">Visit our community forum</li>
+                <li class="mt-3">How to host responsibly</li>
+            </ul>
+            <!-- <div><a href="">Try hosting</a></div>
+            <div><a href="">AirCover for Hosts</a></div>
+            <div><a href="">Explore hosting resources</a></div>
+            <div><a href="">Visit our community forum</a></div>
+            <div><a href="">How to host responsibly</a></div> -->
+        </div>
+        <div class="col">
+            <h3>Airbnb</h3>
+            <ul style="list-style-type: none; padding-left: 0;">
+                <li class="mt-3">Newsroom</li>
+                <li class="mt-3">Learn about new features</li>
+                <li class="mt-3">Careers</li>
+                <li class="mt-3">Investors</li>
+            </ul>
+            <!-- <div><a href="">Newsroom</a></div>
+            <div><a href="">Learn about new features</a></div>
+            <div><a href="">Careers</a></div>
+            <div><a href="">Investors</a></div> -->
+        </div>
+    </div>
+
+
+    <!-- <hr> -->
+
+    <script>
+        window.onload = function () {
+            var cid = document.getElementById("checkindate");
+            var cod = document.getElementById("checkoutdate");
+            var d = new Date();
+            var month = d.getMonth() + 1;
+            var day = d.getDate();
+            var cday = day + 1;
+            var year = d.getFullYear();
+            if (month < 10) {
+                month = "0" + month;
+            }
+            if (day < 10) {
+                day = "0" + day;
+            }
+            if (cday < 10) {
+                cday = "0" + cday;
+            }
+            var checkinDate = year + "-" + month + "-" + day;
+            // var checkoutDate = year + "-" + month + "-" + cday;
+            // console.log(d.toDateString(checkinDate));
+            // cid.value = checkinDate;
+            // cod.value = checkoutDate;
+            cid.setAttribute("min", checkinDate);
+            cod.setAttribute("min", checkinDate);
+
+
+            // calculate charges
+            let numOfRooms = document.getElementById("numOfRooms");
+            let chargePerDay = document.getElementById("charges");
+            let clculateBtn = document.getElementById("calculate");
+            let guestNum = document.getElementById("numOfGuests");
+
+            // guestNum.onchange = function () {
+            //     let x = guestNum.value;
+            //     if (x > (2 * numOfRooms.value)) {
+            //         window.alert("Maximum 2 guests are allowed per room!!!");
+            //         guestNum.value = "";
+            //     }
+            // }
+
+            // guestNum.onchange = function () {
+            //     let x = guestNum.value;
+            //     if (numOfRooms.value == "" || guestNum.value == "" || cid.value == "" || cod.value == "") {
+            //         window.alert("Please fill all the details first");
+            //         guestNum.value = "";
+            //     } else if (x > (2 * numOfRooms.value)) {
+            //         window.alert("Maximum 2 guests are allowed per room!!!");
+            //         guestNum.value = "";
+            //     } else {
+
+            //         let date1 = new Date(cid.value);
+            //         let date2 = new Date(cod.value);
+            //         var dateDiff = date2 - date1;
+            //         // console.log(dateDiff);
+            //         var nights;
+            //         var subtotal;
+            //         var total;
+
+            //         if (dateDiff < 0) {
+            //             window.alert("Checkout date must be ahead of checkin date");
+            //             cid.value = checkinDate;
+            //             cod.value = checkinDate;
+            //         } else {
+            //             nights = Math.floor(dateDiff / (1000 * 60 * 60 * 24));
+            //             subtotal = chargePerDay.value * nights;
+            //             total = chargePerDay.value * numOfRooms.value * nights;
+            //             // console.log(nights);
+            //             document.getElementById("nights").innerHTML = nights;
+            //             document.getElementById("subtotal").innerHTML = "<span>&#8377</span>" + subtotal;
+            //             document.getElementById("rooms").innerHTML = numOfRooms.value;
+            //             document.getElementById("total").innerHTML = "<span>&#8377</span>" + total;
+            //         }
+            //     }
+
+            // }
+
+            clculateBtn.onclick = function () {
+                if (numOfRooms.value == "" || guestNum.value == "" || cid.value == "" || cod.value == "") {
+                    window.alert("Please fill all the details first");
+                } else {
+                    let date1 = new Date(cid.value);
+                    let date2 = new Date(cod.value);
+                    var dateDiff = date2 - date1;
+                    console.log(dateDiff);
+                    var nights;
+                    var subtotal;
+                    var total;
+
+                    if (dateDiff < 0) {
+                        window.alert("Checkout date must be ahead of checkin date");
+                        cid.value = checkinDate;
+                        cod.value = checkinDate;
+                    } else {
+                        nights = Math.floor(dateDiff / (1000 * 60 * 60 * 24));
+                        subtotal = chargePerDay.value * nights;
+                        total = chargePerDay.value * numOfRooms.value * nights;
+                        console.log(nights);
+                        document.getElementById("nights").innerHTML = nights;
+                        document.getElementById("subtotal").innerHTML = "<span>&#8377</span>" + subtotal;
+                        document.getElementById("rooms").innerHTML = numOfRooms.value;
+                        document.getElementById("total").innerHTML = "<span>&#8377</span>" + total;
+                    }
+                }
+            }
+
+        }
+    </script>
+
+
+<%- include('footer') -%>

@@ -1,0 +1,119 @@
+<%- include('header')  -%>
+
+    <nav class="conatainer mt-3">
+        <div class="navigationBar">
+            <!-- logo -->
+            <div class="logo">
+                <a href="/myairbnb"><i class="fa-brands fa-airbnb"></i>airbnb</a>
+            </div>
+            <!-- search box -->
+            <div class="search-box">
+                <span class="searchBox-span">Anywhere</span><span>|</span>
+                <span class="searchBox-span">Any week</span><span>|</span>
+                <span style="color: grey; cursor: pointer;">Add guests</span>
+                <span class="searchBox-span search-icon"><i class="fa-solid fa-magnifying-glass"></i></span>
+            </div>
+            <!-- Become Host -->
+            <div style="display: flex; justify-content: space-around;">
+                <div class="becomeHost">
+                    <button class="host" id="becomeHostBtn" type="button"><a
+                            style="color: inherit; text-decoration: none;" href="/registerproperty">Become a
+                            host</a></button>
+                </div>
+                <div class="globeBtn">
+                    <button class="host" type="button"><i class="fa-solid fa-globe"></i></button>
+                </div>
+
+                <!--Login / signup button  -->
+                <div class="loginSignup" style="margin-left: 2rem;">
+                    <button class="loginSignupBtn" type="button">
+                        <span><i class="fa-solid fa-bars"></i></span>
+                        <!-- <span style="margin-left: 10px;"><i class="fa-solid fa-user"></i></span> -->
+                        <span style="margin-left: 10px;">
+                            <img src="data:image/<%=user.img.contentType%>;base64,<%=user.img.data.toString('base64')%>"
+                                alt="profile" style="width: 2rem; height: 2rem; border-radius: 50%;">
+                        </span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <hr>
+
+    <!-- login sign up pop up on button click -->
+    <div id="popupDiv">
+        <ul class="loginPopup">
+            <li><button><a style="color: inherit; text-decoration: none;" href="/myairbnb">Home</a></button></li>
+            <li><button><a style="color: inherit; text-decoration: none;" href="/logout">Logout</a></button></li>
+            <hr>
+            <li><button>Host your home</button></li>
+            <li><button>Host an experience</button></li>
+            <li><button><a style="color: inherit; text-decoration: none;" href="/help">Help</a></button></li>
+        </ul>
+    </div>
+
+
+    <% if(myBookings.length == 0) { %>
+        <div>
+            <h1>You don't have any booking. Please book from home page</h1>
+        </div>
+    <% }  else { %>
+
+    <% myBookings.forEach(function(element) { %>
+        <div class="bookings">
+            <div class="propertyImage">
+                <img src="data:image/<%=element.bookedProperty.contentType%>;base64,<%=element.bookedProperty.data.toString('base64')%>"
+                    alt="property-image">
+            </div>
+            <div class="bookingDetails">
+                <h1><%=element.propertyName%></h1>
+                <div style="display: none;">
+                    <span class="cid"><%=element.checkinDate%></span>
+                    <span class="cod"><%=element.checkoutDate%></span>
+                </div>
+                <p><span><%=element.city%>, <%=element.state%>, <%=element.country%></span></p>
+                <p>Checkin: <span class="checkindate"></span></p>
+                <p>Checkout: <span class="checkoutdate"></span></p>
+                <p>Nights: <%=element.nights%></p>
+                <p>Rooms: <%=element.rooms%></p>
+                <p>Guests: <%=element.guests%></p>
+                <form action="/deletebooking" method="GET">
+                    <input type="hidden" name="cancelProperty" value="<%=element._id%>">
+                    <button type="submit" class="cancel btn btn-outline-danger">Cancel Booking</button>
+                </form>
+            </div>
+        </div>
+        <br>
+        <% }) %>
+     <% } %>   
+
+    <!-- Script to modify date string -->
+    <script>
+        window.onload = function () {
+            var date1 = document.getElementsByClassName('cid');
+            var date2 = document.getElementsByClassName('cod');
+            var cancelBtn = document.getElementsByClassName("cancel");
+            
+            for (let i = 0; i < date1.length; i++) {
+                document.getElementsByClassName('checkindate')[i].innerText = date1[i].innerText.slice(4, 15);
+                document.getElementsByClassName('checkoutdate')[i].innerText = date2[i].innerText.slice(4,15);
+            }
+
+        }
+
+
+        var cancelBtn = document.getElementsByClassName("cancel");
+
+        for(let i=0; i < cancelBtn.length; i++){
+            cancelBtn[i].onclick = function() {
+                alert("This action will cancel your booking. Press OK to confirm");
+            }
+        }
+
+    </script>
+
+
+
+
+
+    <%- include('footer') -%>

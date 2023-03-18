@@ -1,0 +1,69 @@
+<%- include('header') -%>
+
+    <nav class="conatainer mt-3">
+        <div class="navigationBar">
+            <!-- logo -->
+            <div class="logo">
+                <a href="/myairbnb"><i class="fa-brands fa-airbnb"></i>airbnb</a>
+            </div>
+            <!-- search box -->
+            <div class="search-box">
+                <span class="searchBox-span">Anywhere</span><span>|</span>
+                <span class="searchBox-span">Any week</span><span>|</span>
+                <span class="searchBox-span" style="color: grey; cursor: pointer;">Add guests</span>
+                <span class="searchBox-span search-icon"><i class="fa-solid fa-magnifying-glass"></i></span>
+            </div>
+            <!-- Become Host -->
+            <div style="display: flex; justify-content: space-around;">
+                <div class="becomeHost">
+                    <button class="host" id="becomeHostBtn" type="button"><a
+                            style="color: inherit; text-decoration: none;" href="/registerproperty">Become a
+                            host</a></button>
+                </div>
+                <div class="globeBtn">
+                    <button class="host" type="button"><i class="fa-solid fa-globe"></i></button>
+                </div>
+
+                <button class="loginSignupBtn" type="button">
+                    <div class="loginSignup">
+                        <span><i class="fa-solid fa-bars"></i></span>
+                        <span style="margin-left: 10px;">
+                            <img src="data:image/<%=user.img.contentType%>;base64,<%=user.img.data.toString('base64')%>"
+                                class="d-block" alt="profile" style="width: 2rem; height: 2rem; border-radius: 50%;">
+                        </span>
+                    </div>
+                </button>
+            </div>
+        </div>
+    </nav>
+    <hr>
+
+    <!-- login sign up pop up on button click -->
+    <div id="popupDiv">
+        <ul class="loginPopup">
+            <li><button><a style="color: inherit; text-decoration: none;" href="/myairbnb">Home</a></button></li>
+            <li><button><a style="color: inherit; text-decoration: none;" href="/logout">Logout</a></button></li>
+            <hr>
+            <li><button>Host your home</button></li>
+            <li><button>Host an experience</button></li>
+            <li><Button><a style="color: inherit; text-decoration: none;" href="/help">Help</a></Button></li>
+        </ul>
+    </div>
+
+    <%  hostProperties.forEach(function(property) {  %>
+    <div class="myPropertyDiv">
+        <div class="myProperty">
+            <img src="data:image/<%=property.img[0].contentType%>;base64,<%=property.img[0].data.toString('base64')%>"
+                alt="property-img">
+        </div>
+        <div>
+            <h1><%=property.propertyName%></h1>
+            <p><span><%=property.city%></span>, <span><%=property.state%></span></p>
+            <a href="/delete/<%=property._id%>"><button type="button" class="btn btn-outline-danger">Delete
+                    Property</button></a>
+        </div>
+    </div>
+    <br>
+    <% })  %>
+
+    <%- include('footer') -%>

@@ -1,0 +1,186 @@
+<%- include('header')  -%>
+
+
+    <nav class="conatainer mt-3">
+        <div class="navigationBar">
+            <!-- logo -->
+            <div class="logo">
+                <a href="/myairbnb"><i class="fa-brands fa-airbnb"></i>airbnb</a>
+            </div>
+            <!-- search box -->
+            <div class="" style="text-align: center;">
+                <div class="center">
+                    <h3>Open your door to hosting</h3>
+                    
+                </div>
+                <!-- <span class="searchBox-span">Anywhere</span><span>|</span>
+                <span class="searchBox-span">Any week</span><span>|</span>
+
+                <span class="searchBox-span" style="color: grey; cursor: pointer;">
+                    <form action="/myairbnb/search" method="get"><input class="searchInput" type="text" name="query" size="10"
+                            placeholder="search" required><button class="searchButton" type="submit"
+                            onclick="this.form.submit"><span class=""><i
+                                    class="fa-solid fa-magnifying-glass"></i></span></button></form>
+                </span> -->
+                <!-- <span class="searchBox-span" style="color: grey; cursor: pointer;">Add guests</span> -->
+                <!-- <span class="searchBox-span search-icon"><i class="fa-solid fa-magnifying-glass"></i></span> -->
+            </div>
+            <!-- Become Host -->
+            <div style="display: flex; justify-content: space-around;">
+                <!-- <div class="becomeHost">
+                    <button class="host" id="becomeHostBtn" type="button"><a
+                            style="color: inherit; text-decoration: none;" href="/registerproperty">Become a
+                            host</a></button>
+                </div> -->
+                <div class="globeBtn">
+                    <button class="host" type="button"><i class="fa-solid fa-globe"></i></button>
+                </div>
+
+                <!--Login / signup button  -->
+                <!-- <div class="loginSignup" style="margin-left: 2rem;"> -->
+                <button class="loginSignupBtn" type="button">
+                    <div class="loginSignup">
+                        <span><i class="fa-solid fa-bars"></i></span>
+                        <!-- <span style="margin-left: 10px;"><i class="fa-solid fa-user"></i></span> -->
+                        <span style="margin-left: 10px;">
+                            <img src="data:image/<%=user.img.contentType%>;base64,<%=user.img.data.toString('base64')%>"
+                                alt="profile" style="width: 2rem; height: 2rem; border-radius: 50%;">
+                        </span>
+                    </div>
+                </button>
+                <!-- </div> -->
+            </div>
+        </div>
+    </nav>
+    <hr>
+    <div class="center">
+        <p>Register your property using the form below</p>
+    </div>
+
+    <!-- login sign up pop up on button click -->
+    <div id="popupDiv">
+        <ul class="loginPopup">
+            <% if(isGuest == true) { %>
+            <li><button><a style="color: inherit; text-decoration: none;" href="/mybookings">My Bookings</a></button>
+            </li>
+            <%  } else {  %>
+            <li><button><a style="color: inherit; text-decoration: none;" href="/myairbnb/hostedproperties">Hosted
+                        properties</a></button></li>
+            <% } %>
+            <!-- <li><button><a style="color: inherit; text-decoration: none;" href="/myairbnb/hostedproperties">Hosted properties</a></button></li> -->
+            <li><button><a style="color: inherit; text-decoration: none;" href="/mybookings">My bookings</a></button>
+            </li>
+            <li><button><a style="color: inherit; text-decoration: none;" href="/logout">Logout</a></button></li>
+            <hr>
+            <li><button>Host your home</button></li>
+            <li><button>Host an experience</button></li>
+            <li><Button><a style="color: inherit; text-decoration: none;" href="/help">Help</a></Button></li>
+        </ul>
+    </div>
+
+
+
+
+
+
+<div id="registerPropertyForm" class="mt-3 p-5">
+    <form action="/registerproperty" method="POST" enctype="multipart/form-data">
+        <!-- <div>
+            <label for="propertyId">Property ID</label>
+            <input class="form-control" type="text" name="propertyId" id="propertyId" value="">
+        </div> -->
+        <div class="mb-3">
+            <!-- <label for="propertyName">Property name</label> -->
+            <input class="form-control" type="text" name="propertyName" id="propertyName" placeholder="Property name" required>
+        </div>
+        <div class="mb-3">
+            <!-- <label for="owner">Owner</label> -->
+            <input class="form-control" type="text" name="owner" id="owner" value="" placeholder="Hosted by" required>
+        </div>
+        <div class="row mb-3">
+            <div class="col-sm-7">
+                <!-- <label for="city">City</label> -->
+                <input class="form-control" type="text" name="city" id="city" value="" placeholder="City" required>
+            </div>
+            <div class="col-sm">
+                <!-- <label for="state">State</label> -->
+                <input class="form-control" type="text" name="state" id="state" value="" placeholder="State">
+            </div>
+            <div class="col-sm">
+                <!-- <label for="country">Country</label> -->
+                <input class="form-control" type="text" name="country" id="country" value="" placeholder="Country">
+            </div>
+        </div>
+        <div class="row mb-3">
+            <div class="col">
+                <!-- <label for="price">Price</label> -->
+                <input class="form-control" type="number" name="price" value="" placeholder="Price" required>
+            </div>
+            <div class="col">
+                <!-- <label for="area">Area</label> -->
+                <input class="form-control" type="number" name="area" value="" placeholder="Area">
+            </div>
+        </div>
+        <!-- <div>
+            <label for="rating">Rating</label>
+            <input class="form-control" type="number" name="rating" value="">
+        </div> -->
+        <div class="row g-3">
+            <div class="col-sm">
+                <!-- <label for="bedrooms">No. of Bedrooms</label> -->
+                <input class="form-control" type="number" name="bedrooms" id="bedrooms" value="" placeholder="Number of bedrooms" required>
+            </div>
+            <div class="col-sm">
+                <!-- <label for="beds">No. of Beds</label> -->
+                <input class="form-control" type="number" name="beds" id="beds" value="" placeholder="Number of beds" required>
+            </div>
+            <div class="col-sm">
+                <!-- <label for="bathrooms">No. of Bathrooms</label> -->
+                <input class="form-control" type="number" name="bathrooms" id="bathrooms" value="" placeholder="Number of bathrooms" required>
+            </div>
+            <div class="col-sm">
+                <!-- <label for="guests">Guests Allowed</label> -->
+                <input class="form-control" type="number" name="guests" id="guests" value="" placeholder="Guests allowed" required>
+            </div>
+        </div>
+        <br>
+        <div style="color: #212529">
+            <label for="amenities">Amenties</label><br>
+            <input class="form-check-input" type="checkbox" name="gardenview" value="true"> Garden view
+            <input class="form-check-input" type="checkbox" name="beachaccess" value="true"> Beache Access
+            <input class="form-check-input" type="checkbox" name="wifi" value="true"> Wifi
+            <input class="form-check-input" type="checkbox" name="parking" value="true"> Parking
+            <input class="form-check-input" type="checkbox" name="pool" value="true"> Pool
+            <input class="form-check-input" type="checkbox" name="mountainview" value="true"> Mountain view
+            <input class="form-check-input" type="checkbox" name="kitchen" value="true"> Kitchen
+            <input class="form-check-input" type="checkbox" name="tv" value="true"> Television
+            <input class="form-check-input" type="checkbox" name="pets" value="true"> Pets allowed
+            <input class="form-check-input" type="checkbox" name="ac" value="true"> Air conditioning
+            <input class="form-check-input" type="checkbox" name="workspace" value="true"> Dedicated workspace
+            <input class="form-check-input" type="checkbox" name="alarm" value="true"> Alarm
+            <input class="form-check-input" type="hidden" name="email" value="<%=user.email%>">
+        </div>
+        <br>
+        <div class="row">
+            <label for="images">Images</label>
+            <div class="col">
+            <input class="form-control mb-3" type="file" name="images" required>
+            </div>
+            <div class="col">
+            <input class="form-control mb-3" type="file" name="images" required>
+            </div>
+            <div class="col">
+            <input class="form-control mb-3" type="file" name="images" required>
+            </div>
+            <div class="col">
+            <input class="form-control mb-3" type="file" name="images" required>
+            </div>
+        </div>
+        <button type="submit" class="btn btn-secondary">Submit</button>
+</form>
+</div>
+
+
+
+
+<%- include('footer') -%>

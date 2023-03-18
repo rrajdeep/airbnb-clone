@@ -1,0 +1,89 @@
+<%- include('header') -%>
+
+<nav class="conatainer mt-3">
+    <div class="navigationBar">
+        <!-- logo -->
+        <div class="logo">
+            <a href="/"><i class="fa-brands fa-airbnb"></i>airbnb</a>
+        </div>
+        <!-- search box -->
+        <div class="search-box">
+            <span class="searchBox-span">Anywhere</span><span>|</span>
+            <span class="searchBox-span">Any week</span><span>|</span>
+            <span class="searchBox-span" style="color: grey; cursor: pointer;">Add guests</span>
+            <span class="searchBox-span search-icon"><i class="fa-solid fa-magnifying-glass"></i></span>
+        </div>
+        <!-- Become Host -->
+        <div style="display: flex; justify-content: space-around;">
+            <div class="becomeHost">
+                <button class="host" id="becomeHostBtn" type="button"><a style="color: inherit; text-decoration: none;" href="/registerproperty">Become a host</a></button>
+            </div>
+            <div class="globeBtn">
+                <button class="host" type="button"><i class="fa-solid fa-globe"></i></button>
+            </div>
+            <!--Login / signup button  -->
+            <!-- <div class="loginSignup" style="margin-left: 2rem;"> -->
+                <button class="loginSignupBtn" type="button">
+                    <div class="loginSignup">
+                        <span><i class="fa-solid fa-bars"></i></span>
+                    <span style="margin-left: 10px;"><i class="fa-solid fa-user"></i></span>
+                    </div>
+                </button>
+            <!-- </div> -->
+        </div>
+    </div>
+</nav>
+<hr>
+
+<!-- login sign up pop up on button click -->
+<div id="popupDiv">
+    <ul class="loginPopup">
+        <li><button><a style="color: inherit; text-decoration: none;" href="/register">Sign up</a></button></li>
+        <li><button><a style="color: inherit; text-decoration: none;" href="/login">Login</a></button></li>
+        <hr>
+        <li><button>Host your home</button></li>
+        <li><button>Host an experience</button></li>
+        <li><Button><a style="color: inherit; text-decoration: none;" href="/help">Help</a></Button></li>
+    </ul>
+</div>
+
+<div style="border: 1px solid grey; border-radius: 10px; margin-left: 5rem; margin-right: 5rem; align-items: center;">
+    <div style="text-align: center;">
+        <h3 class="mt-3">Please share your experience</h3>
+    </div>
+    <div class="mt-3 p-5">
+        <form action="" method="POST" id="formId">
+            <label for="name">Name</label><br>
+            <input type="text" class="form-control" name="name" required><br>
+            <label for="starRating" class="form-label">Star Rating</label>
+            <input type="range" class="form-range" name="starRating" min="0" max="5" step="0.5" id="starRating">
+            <div>
+                <span id="rating"></span>
+            </div>
+            <label for="review">Review</label><br>
+            <textarea name="review" class="form-control" id="" cols="30" rows="10"
+                placeholder="Write a brief review"></textarea>
+            <div>
+                <br>
+                <button type="submit" class="btn btn-danger">Submit</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+<script>
+    let x = window.location.pathname;
+    console.log(x);
+    let formData = document.getElementById("formId");
+    formData.setAttribute("action", x);
+
+    var slider = document.getElementById("starRating");
+    var output = document.getElementById("rating");
+    output.innerHTML = slider.value;
+    slider.oninput = function () {
+        output.innerHTML = this.value;
+    }
+</script>
+
+<%- include('footer') -%>

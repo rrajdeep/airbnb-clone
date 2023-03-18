@@ -1,0 +1,146 @@
+<%- include("header") -%>
+
+
+
+<nav class="conatainer mt-3">
+    <div class="navigationBar">
+        <!-- logo -->
+        <div class="logo">
+            <a href="/"><i class="fa-brands fa-airbnb"></i>airbnb</a>
+        </div>
+        <!-- search box -->
+        <div class="search-box">
+            <span class="searchBox-span">Anywhere</span><span>|</span>
+            <span class="searchBox-span">Any week</span><span>|</span>
+            <span class="searchBox-span" style="color: grey; cursor: pointer;">Add guests</span>
+            <span class="searchBox-span search-icon"><i class="fa-solid fa-magnifying-glass"></i></span>
+        </div>
+        <!-- Become Host -->
+        <div style="display: flex; justify-content: space-around;">
+            <div class="becomeHost">
+                <button class="host" id="becomeHostBtn" type="button"><a
+                        style="color: inherit; text-decoration: none;" href="/registerproperty">Become a
+                        host</a></button>
+            </div>
+            <div class="globeBtn">
+                <button class="host" type="button"><i class="fa-solid fa-globe"></i></button>
+            </div>
+            <!--Login / signup button  -->
+            <!-- <div class="loginSignup" style="margin-left: 2rem;"> -->
+            <button class="loginSignupBtn" type="button">
+                <div class="loginSignup">
+                    <span><i class="fa-solid fa-bars"></i></span>
+                    <span style="margin-left: 10px;"><i class="fa-solid fa-user"></i></span>
+                </div>
+            </button>
+            <!-- </div> -->
+        </div>
+    </div>
+</nav>
+<hr>
+
+<!-- login sign up pop up on button click -->
+<div id="popupDiv">
+    <ul class="loginPopup">
+        <li><button><a style="color: inherit; text-decoration: none;" href="/register">Sign up</a></button></li>
+        <li><button><a style="color: inherit; text-decoration: none;" href="/login">Login</a></button></li>
+        <hr>
+        <li><button>Host your home</button></li>
+        <li><button>Host an experience</button></li>
+        <li><Button><a style="color: inherit; text-decoration: none;" href="/help">Help</a></Button></li>
+    </ul>
+</div>
+
+
+<div class="conatiner mx-3 p-5" style="margin-left: auto; margin-right: auto;">
+    <form action="/register" method="POST" enctype="multipart/form-data" class="row g-3">
+        <div class="input-field">
+            <label for="userType">User type</label>
+            <select name="userType" class="form-select" id="userType" required>
+                <option value="guest">Guest</option>
+                <option value="host">Host</option>
+            </select>
+        </div>
+        <div class="row g-2">
+            <div class="col form-floating">
+                <input type="text" class="form-control" name="firstName" id="firstName" value="" required placeholder="First name">
+                <label for="firstName">First name</label>
+            </div>
+
+            <div class="col form-floating">
+                <input type="text" class="form-control" name="lastName" value="" required placeholder="Last name">
+                <label for="lastName">Last name</label>
+            </div>
+        </div>
+        <div class="row g-2">
+            <div class="col">
+                <label for="gender">Gender</label><br>
+                <input type="radio" class="form-check-input" name="gender" value="Male"> Male
+                <input type="radio" class="form-check-input" name="gender" value="Female"> Female
+                <input type="radio" class="form-check-input" name="gender" value="Other"> Other
+            </div>
+            <div class="col">
+                <label for="dob">Date of Birth</label>
+                <input type="date" class="form-control" name="dob" value="">
+            </div>
+            <div class="col">
+                <label for="contactNumber">Contact</label>
+                <input type="number" class="form-control" name="contactNumber" id="contact" value="" required>
+            </div>
+            <div class="col">
+                <label for="profile">Profile image</label>
+                <input type="file" name="profile" required>
+            </div>
+        </div>
+
+        <div class="row g-2">
+            <div class="col form-floating">
+                <input type="text" class="form-control" name="city" id="city" value="" required placeholder="City">
+                <label for="city">City</label>
+            </div>
+
+            <div class="col form-floating">
+                <input type="text" class="form-control" name="country" id="country" value="" required placeholder="Country">
+                <label for="country">Country</label>
+            </div>
+        </div>
+        <div class="form-floating">
+            <input type="email" class="form-control" name="email" id="email" value="" required placeholder="name@example.com">
+            <label for="email">Email</label>
+        </div>
+
+        <div class="row g-2">
+            <div class="col form-floating">
+                <input type="password" class="form-control" name="password" id="pswd" value="" required placeholder="Password">
+                <label for="pswd">Password</label>
+            </div>
+            <div class="col form-floating">
+                <input type="password" class="form-control" name="comparepswd" id="comparepswd" value="" required placeholder="Confirm password">
+                <label for="comparepswd">Confirm Password</label>
+            </div>
+        </div>
+        <div class="col-12">
+            <button type="submit" class="btn btn-secondary">Sign up</button>
+        </div>
+
+    </form>
+</div>
+
+
+
+<script>
+    var password = document.getElementById('pswd'),
+        confirm_pswd = document.getElementById('comparepswd');
+
+    function validatePassword() {
+        if (password.value != confirm_pswd.value) {
+            confirm_pswd.setCustomValidity('Passwords Don\'t Match');
+        } else {
+            confirm_pswd.setCustomValidity('');
+        }
+    }
+    password.onchange = validatePassword;
+    confirm_pswd.onkeyup = validatePassword;
+</script>
+
+<%- include("footer") -%>

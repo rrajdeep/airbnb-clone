@@ -1,0 +1,102 @@
+<%- include('header') -%>
+
+    <nav class="conatainer mt-3 px-5">
+        <div class="helpSecNavbar">
+            <!-- logo -->
+            <div class="logo">
+                <a href="/admin/dashboard" style="color: #222222;"><span><i class="fa-brands fa-airbnb"></i></span><b><span
+                            style="margin-left: 5px;">Airbnb</span></b></a>
+            </div>
+            <div>
+                <h3>Welcome Admin</h3>
+            </div>
+
+            <div style="display: flex; justify-content: space-around;">
+                <div class="globeBtn" style="margin-right: 10px;">
+                    <button class="host" type="button"><i class="fa-solid fa-globe"></i></button>
+                </div>
+
+                <button class="loginSignupBtn" type="button">
+                    <div class="loginSignup">
+                        <span><i class="fa-solid fa-bars"></i></span>
+                        <span style="margin-left: 10px;"><i class="fa-solid fa-user"></i></span>
+                    </div>
+                </button>
+            </div>
+        </div>
+    </nav>
+    <hr>
+    <div id="popupDiv">
+        <ul class="loginPopup">
+            <li><button><a style="color: inherit; text-decoration: none;" href="/admin/manageusers">Manage users</a></button></li>
+            <li><button><a style="color: inherit; text-decoration: none;" href="/admin/manageproperties">Manage properties</a></button></li>
+            <li><button><a style="color: inherit; text-decoration: none;" href="/admin/managebookings">Manage bookings</a></button></li>
+            <li><button><a style="color: inherit; text-decoration: none;" href="/admin/customersupport">Manage help & Support</a></button></li>
+            <li><button><a style="color: inherit; text-decoration: none;" href="/logout">Logout</a></button></li>
+        </ul>
+    </div>
+
+    <div class="mt-3 p-3" style="text-align: center;">
+        <div class="row">
+            <div class="col m-3 pt-3 adminDashInnerDiv">
+                <div class="adminIcons">
+                    <i class="fa-solid fa-users-gear"></i>
+                </div>
+                <div>
+                    <a href="/admin/manageusers"><button class="btn btn-outline-dark">Manage users</button></a>
+                </div>
+            </div>
+            <div class="col m-3 pt-3 adminDashInnerDiv">
+                <div class="adminIcons">
+                    <i class="fa-solid fa-building-circle-exclamation"></i>
+                </div>
+                <div>
+                    <a href="/admin/manageproperties"><button class="btn btn-outline-dark">Manage Properties</button></a>
+                </div>
+            </div>
+            <div class="col m-3 pt- adminDashInnerDiv">
+                <div class="adminIcons">
+                    <i class="fa-solid fa-list-check"></i>
+                </div>
+                <div>
+                    <a href="/admin/managebookings"><button class="btn btn-outline-dark">Mange Bookings</button></a>
+                </div>
+            </div>
+            <div class="col m-3 pt-3 adminDashInnerDiv">
+                <div class="adminIcons">
+                    <i class="fa-solid fa-headset"></i>
+                </div>
+                <div>
+                    <a href="/admin/customersupport"><button class="btn btn-outline-dark">Customer help & support</button></a>
+                </div>
+            </div>
+        </div>
+
+
+
+
+    </div>
+
+    <script>
+
+        var loginSignupBtn = document.getElementsByClassName('loginSignupBtn');
+        var popupDiv = document.getElementById('popupDiv');
+        loginSignupBtn[0].onmouseenter = function () {
+            popupDiv.style.display = "block";
+        }
+        popupDiv.onmouseleave = function () {
+            popupDiv.style.display = "none";
+        }
+
+    
+</script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
+</script>
+
+
+
+
+</body>
+
+</html>

@@ -1,0 +1,293 @@
+<%- include('header')  -%>
+
+    <nav class="conatainer mt-3">
+        <div class="navigationBar">
+            <!-- logo -->
+            <div class="logo">
+                <a href="/myairbnb"><i class="fa-brands fa-airbnb"></i>airbnb</a>
+            </div>
+            <!-- search box -->
+            <div class="search-box">
+                <span class="searchBox-span">Anywhere</span><span>|</span>
+                <span class="searchBox-span">Any week</span><span>|</span>
+
+                <span class="searchBox-span" style="color: grey; cursor: pointer;">
+                    <form action="/myairbnb/search" method="get"><input class="searchInput" type="text" name="query" size="10"
+                            placeholder="search" required><button class="searchButton" type="submit"
+                            onclick="this.form.submit"><span class=""><i
+                                    class="fa-solid fa-magnifying-glass"></i></span></button></form>
+                </span>
+                <!-- <span class="searchBox-span" style="color: grey; cursor: pointer;">Add guests</span> -->
+                <!-- <span class="searchBox-span search-icon"><i class="fa-solid fa-magnifying-glass"></i></span> -->
+            </div>
+            <!-- Become Host -->
+            <div style="display: flex; justify-content: space-around;">
+                <div class="becomeHost">
+                    <button class="host" id="becomeHostBtn" type="button"><a
+                            style="color: inherit; text-decoration: none;" href="/registerproperty">Become a
+                            host</a></button>
+                </div>
+                <div class="globeBtn">
+                    <button class="host" type="button"><i class="fa-solid fa-globe"></i></button>
+                </div>
+
+                <!--Login / signup button  -->
+                <!-- <div class="loginSignup" style="margin-left: 2rem;"> -->
+                <button class="loginSignupBtn" type="button">
+                    <div class="loginSignup">
+                        <span><i class="fa-solid fa-bars"></i></span>
+                        <!-- <span style="margin-left: 10px;"><i class="fa-solid fa-user"></i></span> -->
+                        <span style="margin-left: 10px;">
+                            <img src="data:image/<%=user.img.contentType%>;base64,<%=user.img.data.toString('base64')%>"
+                                alt="profile" style="width: 2rem; height: 2rem; border-radius: 50%;">
+                        </span>
+                    </div>
+                </button>
+                <!-- </div> -->
+            </div>
+        </div>
+    </nav>
+    <hr>
+
+    <!-- login sign up pop up on button click -->
+    <div id="popupDiv">
+        <ul class="loginPopup">
+
+            <% if(isGuest == true) { %>
+            <li><button><a style="color: inherit; text-decoration: none;" href="/mybookings">My Bookings</a></button>
+            </li>
+            <%  } else {  %>
+            <li><button><a style="color: inherit; text-decoration: none;" href="/myairbnb/hostedproperties">Hosted
+                        properties</a></button></li>
+            <% } %>
+
+
+            <!-- <li><button><a style="color: inherit; text-decoration: none;" href="/myairbnb/hostedproperties">Hosted properties</a></button></li> -->
+            <li><button><a style="color: inherit; text-decoration: none;" href="/mybookings">My bookings</a></button>
+            </li>
+            <li><button><a style="color: inherit; text-decoration: none;" href="/logout">Logout</a></button></li>
+            <hr>
+            <li><button>Host your home</button></li>
+            <li><button>Host an experience</button></li>
+            <li><Button><a style="color: inherit; text-decoration: none;" href="/help">Help</a></Button></li>
+        </ul>
+    </div>
+
+    <%- include("belownavsection")  -%>
+
+    <div class="container">
+        <div class="row pt-3 px-1">
+            <% if(properties.length == 0) { %>
+            <h3>No hotels found!!!</h3>
+            <% } else { %>
+            <% for(let i = 0; i < properties.length; i++) { %>
+            <!-- Image Slider -->
+            <div class="col-lg-4" style="width: 16rem;">
+                <a href="/property/<%=properties[i]._id%>" style="text-decoration: none; color: inherit;">
+                    <div id="image-carousel<%=i%>" class="carousel slide" data-bs-interval="false">
+                        <div class="carousel-indicators">
+                            <button type="button" data-bs-target="#image-carousel<%=i%>" data-bs-slide-to="0"
+                                class="active" aria-current="true" aria-label="Slide 1"
+                                style="width: 6px; height: 6px; border-radius: 50%;"></button>
+                            <button type="button" data-bs-target="#image-carousel<%=i%>" data-bs-slide-to="1"
+                                aria-label="Slide 2" style="width: 6px; height: 6px; border-radius: 50%;"></button>
+                            <button type="button" data-bs-target="#image-carousel<%=i%>" data-bs-slide-to="2"
+                                aria-label="Slide 3" style="width: 6px; height: 6px; border-radius: 50%;"></button>
+                            <button type="button" data-bs-target="#image-carousel<%=i%>" data-bs-slide-to="3"
+                                aria-label="Slide 3" style="width: 6px; height: 6px; border-radius: 50%;"></button>
+                        </div>
+                        <!-- carousal -->
+                        <div class="carousel-inner" style="border-radius: 10px;">
+                            <span class="heart">
+                                <i class="fa-regular fa-heart"></i>
+                            </span>
+                            <div class="carousel-item active">
+                                <img src="data:image/<%=properties[i].img[0].contentType%>;base64,<%=properties[i].img[0].data.toString('base64')%>"
+                                    class="d-block" alt="image-1" style="width: 20rem; height: 17rem;">
+                            </div>
+                            <div class="carousel-item">
+                                <img src="data:image/<%=properties[i].img[1].contentType%>;base64,<%=properties[i].img[1].data.toString('base64')%>"
+                                    class="d-block" alt="image-2" style="width: 20rem; height: 17rem;">
+                            </div>
+                            <div class="carousel-item">
+                                <img src="data:image/<%=properties[i].img[2].contentType%>;base64,<%=properties[i].img[2].data.toString('base64')%>"
+                                    class="d-block" alt="image3" style="width: 20rem; height: 17rem;">
+                            </div>
+                            <div class="carousel-item">
+                                <img src="data:image/<%=properties[i].img[3].contentType%>;base64,<%=properties[i].img[3].data.toString('base64')%>"
+                                    class="d-block " alt="image3" style="width: 20rem; height: 17rem;">
+                            </div>
+                        </div>
+                        <!-- carousel control buttons -->
+                        <button class="carousel-control-prev" type="button" data-bs-target="#image-carousel<%=i%>"
+                            data-bs-slide="prev">
+                            <span aria-hidden="true"
+                                style="background-color: white; border-radius: 50% !important; width: 1.5rem; height: 1.5rem;"><i
+                                    class="fa-solid fa-chevron-left" style="color: grey;"></i></span>
+                            <!-- <span class="carousel-control-prev-icon" aria-hidden="true"
+                                style="height: 1rem; width: 1rem; border: 2px solid white; background-color: white;"></span> -->
+                            <span class="visually-hidden">Previous</span>
+                        </button>
+                        <button class="carousel-control-next" type="button" data-bs-target="#image-carousel<%=i%>"
+                            data-bs-slide="next">
+
+                            <span aria-hidden="true"
+                                style="background-color: white; border-radius: 50% !important; width: 1.5rem; height: 1.5rem;"><i
+                                    class="fa-solid fa-chevron-right" style="color: grey;"></i></span>
+                            <!-- <span class="carousel-control-next-icon" aria-hidden="true"
+                                    style="height: 1rem; width: 1rem; border: 2px solid white; background-color: white;"></span> -->
+                            <span class="visually-hidden">Next</span>
+                        </button>
+                    </div>
+                    <div>
+                        <div
+                            style="display: flex !important; align-items: center !important; justify-content: space-between;">
+                            <div>
+                                <h4><%=properties[i].propertyName%></h4>
+                            </div>
+                            <div>
+                                <span>&#9733 <%=properties[i].rating%> New</span>
+                            </div>
+                        </div>
+                        <div>
+                            <p><%=properties[i].state%>, <%=properties[i].country%></p>
+                        </div>
+                        <div>
+                            <p class="card-text"><b><span>&#8377</span><%=properties[i].pricing%></b> night</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <%  } %>
+            <% } %>
+
+        </div>
+
+    </div>
+
+    <!-- Floating button -->
+    <div  id="mapContainer">
+        <div class="showMapConatiner">
+            <button class="showMapBtn" type="Button">Show map <span><i class="fa-solid fa-map"></i></span></button>
+        </div>
+    </div>
+
+
+    <div id="helpnSupportDiv">
+        <button id="supporHidetBtn">X</button>
+        <div class="row mt-3 px-5">
+            <div class="col">
+                <h3>Support</h3>
+                <ul style="list-style-type: none; padding-left: 0;">
+                    <li class="mt-3">Help Centre</li>
+                    <li class="mt-3">AirCover</li>
+                    <li class="mt-3">Safety information</li>
+                    <li class="mt-3">Cancellation options</li>
+                    <li class="mt-3">Our COVID-19 Response</li>
+                </ul>
+            </div>
+            <div class="col">
+                <h3>Community</h3>
+                <ul style="list-style-type: none; padding-left: 0;">
+                    <li class="mt-3">Airbnb.org: disaster relief housing</li>
+                    <li class="mt-3">Support refugees</li>
+                    <li class="mt-3">Combating discrimination</li>
+    
+                </ul>
+            </div>
+            <div class="col">
+                <h3>Hosting</h3>
+                <ul style="list-style-type: none; padding-left: 0;">
+                    <li class="mt-3">Try hosting</li>
+                    <li class="mt-3">AirCover for Hosts</li>
+                    <li class="mt-3">Explore hosting resources</li>
+                    <li class="mt-3">Visit our community forum</li>
+                    <li class="mt-3">How to host responsibly</li>
+                </ul>
+            </div>
+            <div class="col">
+                <h3>Airbnb</h3>
+                <ul style="list-style-type: none; padding-left: 0;">
+                    <li class="mt-3">Newsroom</li>
+                    <li class="mt-3">Learn about new features</li>
+                    <li class="mt-3">Careers</li>
+                    <li class="mt-3">Investors</li>
+                </ul>
+            </div>
+        </div>
+    
+    </div>
+    
+    
+    <br>
+    <footer>
+        <div class="footer">
+            <!-- <div>
+                <span>&copy; 2022 Airbnb Inc,</span>
+            </div> -->
+            <div>
+                <span>&copy; 2022 Airbnb Inc,</span>
+                <span>&#183 </span>
+                <span>Privacy</span>
+                <span>&#183 </span>
+                <span>Terms</span>
+                <span>&#183 </span>
+                <span>Sitemap</span>
+                <span>&#183 </span>
+                <span>Company details</span>
+                <span>&#183 </span>
+                <span>Destinations</span>
+            </div>
+            <div style="display: flex; justify-content: space-around; gap: 1.5rem;">
+                <div>
+                    <a href="/siteinstructions" style="text-decoration: none; color: #e42246">Site instructions</a>
+                </div>
+                <div>
+                    <span><i class="fa-solid fa-globe"></i></span>
+                </div>
+                <div>
+                    <span>English (IN)</span>
+                </div>
+                <div>
+                    <span>&#8377 </span>
+                    <span>INR</span>
+                </div>
+                <div>
+                    <button id="supprtShowBtn" class="loginSignupBtn popHelpBtn"><span><i class="fa-solid fa-angle-up"></i></span></button>
+                </div>
+            </div>
+            
+        </div>
+    </footer>
+    <script>
+            var loginSignupBtn = document.getElementsByClassName('loginSignupBtn');
+            var popupDiv = document.getElementById('popupDiv');
+            loginSignupBtn[0].onmouseenter = function () {
+                popupDiv.style.display = "block";
+            }
+            popupDiv.onmouseleave = function () {
+                popupDiv.style.display = "none";
+            }
+            document.getElementById('becomeHostBtn').onclick = function () {
+                document.getElementById('registerPropertyForm').style.display = "block";
+            }
+            var showSupprtDiv = document.getElementById("supprtShowBtn");
+            var supportDiv = document.getElementById("helpnSupportDiv");
+            var hideSupportDiv = document.getElementById("supporHidetBtn");
+            var mapcontainer = document.getElementById('mapContainer');
+            showSupprtDiv.onclick = function () {
+                supportDiv.style.display = "block";
+                mapcontainer.style.display ="none";
+            }
+    
+            hideSupportDiv.onclick = function () {
+                supportDiv.style.display = "none";
+                mapcontainer.style.display ="block";
+            }
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
+    </script>
+    </body>
+    
+    </html>

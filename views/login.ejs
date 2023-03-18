@@ -1,0 +1,95 @@
+<%- include('header') -%>
+
+  <nav class="conatainer mt-3">
+    <div class="navigationBar">
+      <!-- logo -->
+      <div class="logo">
+        <a href="/"><i class="fa-brands fa-airbnb"></i>airbnb</a>
+      </div>
+      <!-- search box -->
+      <div class="search-box">
+        <span class="searchBox-span">Anywhere</span><span>|</span>
+        <span class="searchBox-span">Any week</span><span>|</span>
+        <span class="searchBox-span" style="color: grey; cursor: pointer;">Add guests</span>
+        <span class="searchBox-span search-icon"><i class="fa-solid fa-magnifying-glass"></i></span>
+      </div>
+      <!-- Become Host -->
+      <div style="display: flex; justify-content: space-around;">
+        <div class="becomeHost">
+          <button class="host" id="becomeHostBtn" type="button"><a style="color: inherit; text-decoration: none;"
+              href="/registerproperty">Become a host</a></button>
+        </div>
+        <div class="globeBtn">
+          <button class="host" type="button"><i class="fa-solid fa-globe"></i></button>
+        </div>
+
+        <!--Login / signup button  -->
+        <!-- <div class="loginSignup" style="margin-left: 2rem;"> -->
+        <button class="loginSignupBtn" type="button">
+          <div class="loginSignup">
+            <span><i class="fa-solid fa-bars"></i></span>
+            <span style="margin-left: 10px;"><i class="fa-solid fa-user"></i></span>
+          </div>
+        </button>
+        <!-- </div> -->
+      </div>
+    </div>
+  </nav>
+  <hr>
+
+  <!-- login sign up pop up on button click -->
+  <div id="popupDiv">
+    <ul class="loginPopup">
+      <li><button><a style="color: inherit; text-decoration: none;" href="/register">Sign up</a></button></li>
+      <li><button><a style="color: inherit; text-decoration: none;" href="/login">Login</a></button></li>
+      <hr>
+      <li><button>Host your home</button></li>
+      <li><button>Host an experience</button></li>
+      <li><Button><a style="color: inherit; text-decoration: none;" href="/help">Help</a></Button></li>
+    </ul>
+  </div>
+
+
+
+  <div class="login-div-outer-container">
+    <div class="login-div">
+      <div class="login-left-div">
+        <div class="regInfoDiv">
+          <h1><b>New to Airbnb..?</b></h1>
+          <h4><a style="text-decoration: none;" href="/register"><span style="color: black; text-decoration:underline;">Register</span></a> to get started.</h4>
+        </div>
+      </div>
+
+      <div class="login-right-div">
+        <div>
+          <div>
+            <span style="font-size: 4rem; color: white;"><i class="fa-brands fa-airbnb"></i></span>
+            <h3 style="color: white">Welcome to Airbnb</h3>
+          </div>
+        </div>
+        <div class="p-3">
+          <form action="/login" method="POST">
+
+            <div>
+              <div class="form-floating mb-3">
+                <input type="text" name="username" class="form-control" id="uName" required placeholder="Username">
+                <label for="uName">Username</label>
+              </div>
+
+              <div class="form-floating mb-3">
+                <input type="password" name="password" class="form-control" id="fPassword" required
+                  placeholder="Password">
+                <label for="fPassword">Password</label>
+              </div>
+            </div>
+            <div class="">
+              <button type="submit" class="btn btn-light">Sign in</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <%- include('footer') -%>

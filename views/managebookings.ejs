@@ -1,0 +1,128 @@
+<%- include('header') -%>
+    
+    <nav class="conatainer mt-3 px-5">
+        <div class="helpSecNavbar">
+            <!-- logo -->
+            <div class="logo">
+                <a href="/admin/dashboard" style="color: #222222;"><span><i class="fa-brands fa-airbnb"></i></span><b><span
+                            style="margin-left: 5px;">Airbnb</span></b></a>
+            </div>
+            <div>
+                <h3>Manage bookings</h3>
+            </div>
+
+            <div style="display: flex; justify-content: space-around;">
+                <div class="globeBtn" style="margin-right: 10px;">
+                    <button class="host" type="button"><i class="fa-solid fa-globe"></i></button>
+                </div>
+
+                <button class="loginSignupBtn" type="button">
+                    <div class="loginSignup">
+                        <span><i class="fa-solid fa-bars"></i></span>
+                        <span style="margin-left: 10px;"><i class="fa-solid fa-user"></i></span>
+                    </div>
+                </button>
+            </div>
+        </div>
+    </nav>
+    <hr>
+    <div id="popupDiv">
+        <ul class="loginPopup">
+            <li><button><a style="color: inherit; text-decoration: none;" href="/admin/dashboard">Dashboard</a></button></li>
+            <li><button><a style="color: inherit; text-decoration: none;" href="/admin/manageusers">Manage users</a></button></li>
+            <li><button><a style="color: inherit; text-decoration: none;" href="/admin/manageproperties">Manage properties</a></button></li>
+            <li><button><a style="color: inherit; text-decoration: none;" href="/admin/customersupport">Manage help & Support</a></button></li>
+            <li><button><a style="color: inherit; text-decoration: none;" href="/logout">Logout</a></button></li>
+        </ul>
+    </div>
+
+    <div class="m-3">
+        <table class="table table-striped table-hover">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Property name</th>
+                    <th>City</th>
+                    <th>State</th>
+                    <th>Rooms</th>
+                    <th>Nights</th>
+                    <th>Guests</th>
+                    <th>User</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% for(let i = 0; i < bookings.length; i++) { %>
+                <tr>
+                    <td><%=i+1%></td>
+                    <td><%=bookings[i].propertyName%></td>
+                    <td><%=bookings[i].city%></td>
+                    <td><%=bookings[i].state%></td>
+                    <td><%=bookings[i].rooms%></td>
+                    <td><%=bookings[i].nights%></td>
+                    <td><%=bookings[i].guests%></td>
+                    <td><%=bookings[i].email%></td>
+                    <td><a href="/admin/managebookings/<%=bookings[i]._id%>"><button
+                                class="btn btn-outline-danger"><span><i class="fa-regular fa-trash-can"></i></span><span
+                                    style="margin-left: 5px;">Delete</span></button></a></td>
+                </tr>
+                <% } %>
+            </tbody>
+        </table>
+
+    </div>
+
+
+
+    <!-- <footer class="mt-3">
+        <hr>
+        <div class="footer" style="display: flex; justify-content: space-around;">
+            <div>
+                <span>&copy; 2022 Airbnb Inc,</span>
+                <span>&#183 </span>
+                <span>Privacy</span>
+                <span>&#183 </span>
+                <span>Terms</span>
+                <span>&#183 </span>
+                <span>Sitemap</span>
+                <span>&#183 </span>
+                <span>Company details</span>
+                <span>&#183 </span>
+                <span>Desstinations</span>
+            </div>
+            <div>
+                <span><i class="fa-solid fa-globe"></i></span>
+            </div>
+            <div>
+                <span>English (IN)</span>
+            </div>
+            <div>
+                <span>&#8377 </span>
+                <span>INR</span>
+            </div>
+            <div>
+                <button id="supprtShowBtn"><span><i class="fa-solid fa-angle-up"></i></span></button>
+            </div>
+        </div>
+    </footer> -->
+
+    <script>
+
+        var loginSignupBtn = document.getElementsByClassName('loginSignupBtn');
+        var popupDiv = document.getElementById('popupDiv');
+        loginSignupBtn[0].onmouseenter = function () {
+            popupDiv.style.display = "block";
+        }
+        popupDiv.onmouseleave = function () {
+            popupDiv.style.display = "none";
+        }
+
+    
+</script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
+</script>
+</body>
+
+
+</html>

@@ -1,0 +1,92 @@
+<%- include('header')  -%>
+
+    <nav class="conatainer mt-3 px-5">
+        <div class="helpSecNavbar">
+            <!-- logo -->
+            <div class="logo">
+                <a href="/admin/dashboard" style="color: #222222;"><span><i class="fa-brands fa-airbnb"></i></span><b><span
+                            style="margin-left: 5px;">Airbnb</span></b></a>
+            </div>
+            <div>
+                <h3>Manage users</h3>
+            </div>
+
+            <div style="display: flex; justify-content: space-around;">
+                <div class="globeBtn" style="margin-right: 10px;">
+                    <button class="host" type="button"><i class="fa-solid fa-globe"></i></button>
+                </div>
+
+                <button class="loginSignupBtn" type="button">
+                    <div class="loginSignup">
+                        <span><i class="fa-solid fa-bars"></i></span>
+                        <span style="margin-left: 10px;"><i class="fa-solid fa-user"></i></span>
+                    </div>
+                </button>
+            </div>
+        </div>
+    </nav>
+    <hr>
+
+    <div id="popupDiv">
+        <ul class="loginPopup">
+            <li><button><a style="color: inherit; text-decoration: none;" href="/admin/dashboard">Dashboard</a></button></li>
+            <li><button><a style="color: inherit; text-decoration: none;" href="/admin/manageproperties">Manage properties</a></button></li>
+            <li><button><a style="color: inherit; text-decoration: none;" href="/admin/managebookings">Manage bookings</a></button></li>
+            <li><button><a style="color: inherit; text-decoration: none;" href="/admin/customersupport">Manage help & Support</a></button></li>
+            <li><button><a style="color: inherit; text-decoration: none;" href="/logout">Logout</a></button></li>
+        </ul>
+    </div>
+
+    <div class="m-3">
+
+        <table class="table table-striped table-hover">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Name</th>
+                    <th>Gender</th>
+                    <th>City</th>
+                    <th>Country</th>
+                    <th>Email</th>
+                    <th>User type</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% for(let i = 0; i < users.length; i++) { %>
+                <tr>
+                    <td><%=i+1%></td>
+                    <td><span><%=users[i].fName%></span> <%=users[i].lName%></td>
+                    <td><%=users[i].gender%></td>
+                    <td><%=users[i].city%></td>
+                    <td><%=users[i].country%></td>
+                    <td><%=users[i].email%></td>
+                    <td><%=users[i].userType%></td>
+                    <td><a href="/admin/manageusers/<%=users[i]._id%>"><button class="btn btn-outline-danger"><span><i class="fa-regular fa-trash-can"></i></span><span style="margin-left: 5px;">Delete</span></button></a></td>
+                </tr>
+                <% } %>
+            </tbody>
+        </table>
+
+    </div>
+
+    <script>
+
+        var loginSignupBtn = document.getElementsByClassName('loginSignupBtn');
+        var popupDiv = document.getElementById('popupDiv');
+        loginSignupBtn[0].onmouseenter = function () {
+            popupDiv.style.display = "block";
+        }
+        popupDiv.onmouseleave = function () {
+            popupDiv.style.display = "none";
+        }
+
+    
+</script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
+</script>
+
+</body>
+
+</html>

@@ -1,0 +1,269 @@
+<%- include('header') -%>
+
+    <nav class="conatainer mt-3 px-5">
+        <div class="helpSecNavbar">
+            <!-- logo -->
+            <div class="logo">
+                <a href="/help" style="color: #222222;"><span><i class="fa-brands fa-airbnb"></i></span><b><span
+                            style="margin-left: 5px;">Help Centre</span></b></a>
+            </div>
+
+            <div style="display: flex; justify-content: space-around;">
+                <div class="globeBtn" style="margin-right: 10px;">
+                    <button class="host" type="button"><i class="fa-solid fa-globe"></i></button>
+                </div>
+
+                <button class="loginSignupBtn" type="button">
+                    <div class="loginSignup">
+                        <span><i class="fa-solid fa-bars"></i></span>
+                        <span style="margin-left: 10px;"><i class="fa-solid fa-user"></i></span>
+                    </div>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- login sign up pop up on button click -->
+    <div id="popupDiv">
+        <ul class="loginPopup">
+            <li><button><a style="color: inherit; text-decoration: none;" href="/register">Sign up</a></button></li>
+            <li><button><a style="color: inherit; text-decoration: none;" href="/login">Login</a></button></li>
+            <hr>
+            <li><button>Host your home</button></li>
+            <li><button>Host an experience</button></li>
+            <li><Button><a style="color: inherit; text-decoration: none;" href="/help">Help</a></Button></li>
+        </ul>
+    </div>
+
+    <br>
+
+    <div class="helpCaption mt-3 pt-3">
+        <span>Hi, how can we help?</span>
+    </div>
+
+    <br><br>
+
+    <div>
+        <div class="hereToHelp mx-5 row p-3">
+            <div class="col">
+                <div style="font-size: 26px;">
+                    We are here for you
+                </div>
+                <div>
+                    Log in to get help with your reservations, account, and more.
+                </div>
+            </div>
+
+            <div class="col">
+                <a href="/login">
+                    <button class="reserveBtn">
+                        <div class="reserveBtnDiv">Login or sign up</div>
+                    </button>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <br>
+    <br>
+
+
+    <h3 style="text-align: center;">OR</h3>
+    <p style="text-align: center;">Fill the form below, we will get back to you in a while</p>
+
+    <br>
+
+    <div class="helpForm">
+        <div class="w-50 p-3" style="border: 1px solid #ddd; border-radius: 1rem;">
+            <form action="/help" method="post">
+                <div class="form-floating mb-3">
+                    <input type="text" name="name" class="form-control" id="fName" required placeholder="Name">
+                    <label for="floatingName">Name</label>
+                </div>
+                <div class="form-floating mb-3">
+                    <input type="email" class="form-control" name="email" id="fEmail" required placeholder="Email">
+                    <label for="fEmail">Email</label>
+                </div>
+                <div class="form-floating">
+                    <input type="number" name="contact" class="form-control" id="fContact" required
+                        placeholder="Contact">
+                    <label for="fContact">Contact</label>
+                </div>
+                <div class="mb-3">
+                    <label for="fComment"></label>
+                    <textarea name="comment" class="form-control" cols="30" rows="10" required
+                        placeholder="How can we help..."></textarea>
+                </div>
+                <div>
+                    <button type="submit" class="btn btn-danger">Submit</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <br>
+    <br>
+
+    <div class="getStarted container">
+        <div>
+            <h2>Guides for getting started</h2>
+        </div>
+        <div>
+            <a style="text-decoration: underline;" href=""><button class="btn">Brows all topics <span><i class="fa-solid fa-angle-right"></i></span></button></a>
+        </div>
+    </div>
+    <br>
+
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <div class="helpSectionDiv">
+                    <img src="/src/get-started.jpg" alt="get-started">
+                </div>
+                <div class="mt-3">
+                    <h3 style="font-size: 1.3rem; line-height: 1.2rem; color: #222;">Getting started with Airbnb</h3>
+                </div>
+            </div>
+
+            <div class="col">
+                <div class="helpSectionDiv">
+                    <img src="/src/access-account.jpg" alt="access-account">
+                </div>
+                <div class="mt-3">
+                    <h3 style="font-size: 1.3rem; line-height: 1.2rem;">Accessing your account</h3>
+                </div>
+            </div>
+
+            <div class="col">
+                <div class="helpSectionDiv">
+                    <img src="/src/reservation-help.jpg" alt="reservation-help">
+                </div>
+                <div class="mt-3">
+                    <h3 style="font-size: 1.3rem; line-height: 1.2rem;">Help with a reservation</h3>
+                </div>
+            </div>
+
+            <div class="col">
+                <div class="helpSectionDiv">
+                    <img src="/src/air-cover.png" alt="air-cover">
+                </div>
+                <div class="mt-3">
+                    <h3 style="font-size: 1.3rem; line-height: 1.2rem;">Getting protected through AirCover</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <hr>
+    <div class="p-3">
+        <h3>Top Articles</h3>
+        <div class="topArticles">
+            <div>
+                <div>
+                    <b>Cancelling your reservation for a stay</b>
+                </div>
+                <div>
+                    Your plans have changed and now you need to cancel your reservation. No problem. You can...
+                </div>
+            </div>
+
+            <div>
+                <div>
+                    <b>Change the date or time of your Experience reservation</b>
+                </div>
+                <div>
+                    You booked an Experience, but the date or time no longer works for you? Don’t worry, you don’t have
+                    to
+                    miss out! You may be able to change y…
+                </div>
+
+            </div>
+
+            <div>
+                <div>
+                    <b>If your Host cancels your reservation</b>
+                </div>
+                <div>
+                    While it’s rare, sometimes a Host may need to cancel a reservation. We understand that this...
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Help and support -->
+    <div class="row mt-3 p-5" style="background-color: #f7f7f7; border-top: 1px solid rgb(189, 189, 189);">
+        <div class="col">
+            <h3>Support</h3>
+            <ul style="list-style-type: none; padding-left: 0;">
+                <li class="mt-3">Help Centre</li>
+                <li class="mt-3">AirCover</li>
+                <li class="mt-3">Safety information</li>
+                <li class="mt-3">Cancellation options</li>
+                <li class="mt-3">Our COVID-19 Response</li>
+            </ul>
+        </div>
+        <div class="col">
+            <h3>Community</h3>
+            <ul style="list-style-type: none; padding-left: 0;">
+                <li class="mt-3">Airbnb.org: disaster relief housing</li>
+                <li class="mt-3">Support refugees</li>
+                <li class="mt-3">Combating discrimination</li>
+
+            </ul>
+        </div>
+        <div class="col">
+            <h3>Hosting</h3>
+            <ul style="list-style-type: none; padding-left: 0;">
+                <li class="mt-3">Try hosting</li>
+                <li class="mt-3">AirCover for Hosts</li>
+                <li class="mt-3">Explore hosting resources</li>
+                <li class="mt-3">Visit our community forum</li>
+                <li class="mt-3">How to host responsibly</li>
+            </ul>
+        </div>
+        <div class="col">
+            <h3>Airbnb</h3>
+            <ul style="list-style-type: none; padding-left: 0;">
+                <li class="mt-3">Newsroom</li>
+                <li class="mt-3">Learn about new features</li>
+                <li class="mt-3">Careers</li>
+                <li class="mt-3">Investors</li>
+            </ul>
+        </div>
+
+
+        <footer style="background-color: #f7f7f7;">
+            <hr>
+            <div class="footer" style="display: flex; justify-content: space-around;">
+                <div>
+                    <span>&copy; 2022 Airbnb Inc,</span>
+                    <span>&#183 </span>
+                    <span>Privacy</span>
+                    <span>&#183 </span>
+                    <span>Terms</span>
+                    <span>&#183 </span>
+                    <span>Sitemap</span>
+                    <span>&#183 </span>
+                    <span>Company details</span>
+                    <span>&#183 </span>
+                    <span>Desstinations</span>
+                </div>
+                <div>
+                    <span><i class="fa-solid fa-globe"></i></span>
+                </div>
+                <div>
+                    <span>English (IN)</span>
+                </div>
+                <div>
+                    <span>&#8377 </span>
+                    <span>INR</span>
+                </div>
+                <div>
+                    <button id="supprtShowBtn"><span><i class="fa-solid fa-angle-up"></i></span></button>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+</body>
