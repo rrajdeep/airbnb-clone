@@ -1,0 +1,649 @@
+body {
+    font-family: 'Roboto', Helvetica, sans-serif;
+    margin-left: 1rem;
+    margin-right: 1rem;
+}
+
+.navigationBar {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.logo {
+    font-size: 1.5rem;
+    color: #FF385C;
+    padding-top: 0.5rem;
+}
+
+.logo>a {
+    text-decoration: none;
+    color: #FF385C;
+}
+
+.grid-container {
+    margin-left: 3.5rem;
+    margin-right: 3.5rem;
+    display: grid;
+    text-align: center;
+    grid-auto-flow: column;
+    grid-gap: 1rem;
+}
+
+.item {
+    display: block;
+    padding: 5px 0;
+}
+
+.item>span {
+    border-bottom: 1px solid white;
+}
+
+.item>span:hover {
+    border-bottom: 2px solid grey;
+}
+
+.search-box {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    margin-left: 2rem;
+    margin-right: 2rem;
+    border: 1px solid #dddddd;
+    border-radius: 2rem;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+}
+
+.search-box:hover {
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.08), 0 4px 12px rgba(0, 0, 0, 0.05);
+    transition: box-shadow 0.2s ease;
+    transition-property: box-shadow;
+    transition-duration: 0.2s;
+    transition-timing-function: ease;
+    transition-delay: 0s;
+}
+
+.searchBox-span {
+    display: inline-block;
+    text-align: center;
+    /* margin-top: 0.5rem; */
+    margin-left: 10px;
+    margin-right: 10px;
+    cursor: pointer;
+}
+
+.search-icon {
+    width: 2rem;
+    height: 2rem;
+    background-color: #FF385C;
+    color: white;
+    border-radius: 100%;
+    padding-top: 4px;
+    text-align: center;
+}
+
+.searchInput {
+    border: none;
+}
+
+.searchInput:focus {
+    outline: none;
+}
+
+.searchButton {
+    border: none;
+    width: 2rem;
+    height: 2rem;
+    border-radius: 50%;
+    background-color: #FF385C;
+    color: white;
+}
+
+.searchButton:hover {
+    background-color: #cc0b2f;
+}
+
+.becomeHost {
+    display: flex;
+    flex-direction: row;
+    margin-left: 2rem;
+    display: inline-block;
+    text-align: center;
+    margin: auto 2px;
+    padding: 0.5rem;
+
+}
+
+.becomeHost:hover {
+    background-color: #dddddd;
+    border-radius: 21px;
+}
+
+.globeBtn {
+    margin: auto 1rem auto 1rem;
+    text-align: center;
+    align-content: center;
+    padding: 0.5rem;
+    width: 2.5rem;
+    height: 2.5rem;
+}
+
+.globeBtn:hover {
+    border-radius: 50%;
+    background-color: #dddddd;
+}
+
+.host {
+    background: none;
+    color: inherit;
+    border: none;
+    padding: 0;
+    font: inherit;
+    cursor: pointer;
+    outline: inherit;
+}
+
+.loginSignup {
+    width: 80px;
+    height: 42px;
+    border: 1px solid #dddddd;
+    border-radius: 2rem;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    /* padding-top: 5px; */
+}
+
+.loginSignup:hover,
+#popupDiv {
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.08), 0 4px 12px rgba(0, 0, 0, 0.05);
+    transition: box-shadow 0.2s ease;
+    transition-property: box-shadow;
+    transition-duration: 0.2s;
+    transition-timing-function: ease;
+    transition-delay: 0s;
+
+}
+
+.loginSignupBtn {
+    background: none;
+    color: inherit;
+    border: none;
+    /* border: 1px solid #dddddd; */
+    padding: 0;
+    border-radius: 21px;
+    font: inherit;
+    cursor: pointer;
+    outline: inherit;
+
+}
+
+#popupDiv {
+    position: absolute;
+    top: 60px;
+    right: 100px;
+    display: none;
+    width: 250px;
+    margin: auto;
+    transition-property: none;
+    border-radius: 10px;
+    background-color: white;
+    z-index: 10 !important;
+}
+
+.loginPopup {
+    list-style-type: none;
+    padding: 0%;
+}
+
+.loginPopup>li:hover {
+    background-color: #ddd;
+}
+
+.loginPopup>li>button {
+    border: 0;
+    background: none;
+    cursor: pointer;
+    font: inherit;
+}
+
+.center {
+    text-align: center;
+}
+
+.booking-div {
+    box-sizing: border-box;
+    background-color: white;
+    width: fit-content;
+    border: 1px solid #ddd;
+    border-radius: 12px;
+    padding: 24px;
+    box-shadow: rgb(0 0 0 / 12%) 0px 6px 16px;
+}
+
+.reserveBtnDiv {
+    text-align: center;
+    color: white;
+    border: 0px;
+    padding: 0.8rem;
+    width: auto;
+    height: 3rem;
+    border-radius: 5px;
+    background-image: linear-gradient(to right top, #E61E4D 0%, #D70466 50%, #D70466 100%) !important;
+}
+
+.reserveBtn {
+    padding: auto;
+    margin-top: 0.5rem;
+    background: none;
+    color: inherit;
+    border: none;
+    font: inherit;
+    cursor: pointer;
+    width: 100%;
+    text-align: justify;
+}
+
+.claculateBtn {
+    color: white;
+    background: #f3466e;
+    border-radius: 10px;
+    border: none;
+    font: inherit;
+}
+
+.heart {
+    color: white;
+    position: relative;
+    left: 12.5rem;
+    bottom: -0.8rem;
+    font-size: 20px;
+    z-index: 8 !important;
+}
+
+.imgContainer {
+    display: grid;
+    grid-template-columns: auto auto;
+    gap: 0.5rem;
+}
+
+.mainImage {
+    border-bottom-left-radius: 10px;
+    border-top-left-radius: 10px;
+    overflow: hidden;
+}
+
+.mainImage img {
+    width: 35rem;
+    height: 23.5rem;
+}
+
+.sideImages {
+    display: grid;
+    grid-template-columns: auto auto;
+    grid-template-rows: auto auto;
+    gap: 0.5rem;
+}
+
+.sideImgDiv {
+    overflow: hidden
+}
+
+.sideImgDiv img {
+    width: 21rem;
+    height: 11.5rem;
+    object-fit: cover;
+}
+
+.showAllPhotosBtn {
+    position: relative;
+    cursor: pointer !important;
+    display: inline-block !important;
+    margin: 0px !important;
+    position: relative !important;
+    text-align: center !important;
+    text-decoration: none !important;
+    width: auto !important;
+    background-color: white;
+    border-width: 1px !important;
+    border-style: solid !important;
+    outline: none !important;
+    border-radius: 8px !important;
+    border-color: #222222 !important;
+    color: #222222 !important;
+}
+
+.showAllPhotosBtn:hover {
+    background-color: #eee4e4;
+}
+
+.rightTopImg {
+    border-top-right-radius: 10px;
+}
+
+.rightBottomImg {
+    border-bottom-right-radius: 10px;
+}
+
+.amenitiesAndBookingForm {
+    display: grid;
+    grid-template-columns: auto auto;
+    gap: 10rem;
+}
+
+.amenities {
+    display: grid;
+    grid-template-rows: auto auto;
+    gap: 1.5rem;
+}
+
+img {
+    opacity: 1.0;
+}
+
+img:hover {
+    opacity: 0.8;
+    transition: opacity 0.3s ease-in-out;
+}
+
+.bookings {
+    display: flex;
+}
+
+.propertyImage,
+.bookingDetails {
+    padding: 1rem;
+}
+
+.propertyImage>img {
+    width: 18rem;
+    height: 20rem;
+    object-fit: cover;
+    border-radius: 1.2rem;
+}
+
+.myPropertyDiv {
+    display: flex;
+    gap: 1rem;
+    flex-direction: row;
+}
+
+.myProperty>img {
+    width: 9rem;
+    height: 10rem;
+    border-radius: 0.8rem;
+}
+
+.tempBooking {
+    display: grid;
+    grid-template-columns: auto auto;
+    gap: 1rem;
+}
+
+.tempBookingItem1,
+.tempBookingItem2 {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+}
+
+.placePerks {
+    display: flex;
+}
+
+.perk {
+    display: grid;
+    grid-template-columns: auto;
+    margin-left: 10px;
+}
+
+#registerPropertyForm {
+    border: 1px solid grey;
+    border-radius: 10px;
+}
+
+.date-label {
+    font-weight: 800;
+    font-size: 11px !important;
+}
+
+.propertyHead {
+    display: flex !important;
+    align-items: flex-end !important;
+    justify-content: space-between !important;
+}
+
+.save-share-btn {
+    outline: none;
+    cursor: pointer;
+    touch-action: manipulation;
+    border: none;
+    background-color: white;
+    text-decoration: underline;
+
+}
+
+.save-share-btn:hover {
+    background-color: rgb(240, 240, 240);
+    border-radius: 0.5rem;
+}
+
+.hostProfile {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+}
+
+.showMapConatiner {
+    display: block;
+    position: fixed;
+    align-items: center;
+    justify-content: space-around;
+    left: 45.5%;
+    bottom: 50px;
+    text-align: center;
+    z-index: 8 !important;
+}
+
+.showMapBtn {
+    cursor: pointer;
+    border: none;
+    background-color: #222222;
+    color: #ddd;
+    border-radius: 28px;
+    padding: 15px;
+}
+
+
+#helpnSupportDiv {
+    display: none;
+    background-color: #f7f7f7;
+    border-top: 1px solid rgb(189, 189, 189);
+    z-index: 100 !important;
+}
+
+#mapContainer {
+    display: block;
+}
+
+.footer {
+    position: relative;
+    bottom: 10px;
+    display: flex;
+    width: 100%;
+    justify-content: space-around;
+    align-items: flex-end;
+}
+
+#supporHidetBtn {
+    border: none;
+    background-color: #e42246;
+    color: #fff;
+    text-align: center;
+    position: relative;
+    left: 10px;
+    top: 10px;
+    border-radius: 0.2rem;
+    width: 1.5rem;
+    height: 1.5rem;
+}
+
+.reviewUserProfile {
+    display: flex;
+    width: 50px;
+    height: 50px;
+    align-items: center;
+    border-radius: 50%;
+    border: 1px solid grey;
+    justify-content: space-around;
+}
+
+.userProfileIcon {
+    font-size: 2rem;
+    color: grey;
+}
+
+.helpCaption {
+    text-align: center;
+    font-size: 3rem;
+    line-height: 56px;
+    font-weight: 600;
+}
+
+.hereToHelp {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border: 1px solid #ddd;
+    border-radius: 21px;
+}
+
+.topArticles {
+    display: grid;
+    grid-template-columns: auto auto auto;
+    gap: 2rem;
+}
+
+.helpForm {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.adminDashboard {
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+    gap: 1.5rem;
+    align-items: center;
+}
+
+.adminDashInnerDiv {
+    border: 2px solid grey;
+    border-radius: 21px;
+    text-align: center;
+    height: auto;
+    padding: 0.5rem;
+}
+
+.adminIcons {
+    font-size: 5rem;
+    color: grey;
+}
+
+.helpSecNavbar {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+}
+
+.getStarted {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+
+}
+
+.helpSectionDiv {
+    border-radius: 1.5rem;
+}
+
+.helpSectionDiv>img {
+    border-radius: 1rem;
+    width: 15.8rem;
+    height: 15.8rem;
+    object-fit: cover;
+}
+
+.login-div-outer-container {
+
+    display: block;
+    min-height: 400px;
+    position: relative;
+}
+
+.login-div {
+    display: grid;
+    grid-template-columns: 50% 50%;
+
+}
+
+.login-left-div {
+    min-height: 400px;
+    border-top-left-radius: 21px;
+    border-bottom-left-radius: 21px;
+    text-align: center;
+    /* background-color: black; */
+    font-family: 'Roboto', Helvetica, sans-serif;
+    /* color: white; */
+    background-image: url("/src/login-left1.jpeg");
+    background-repeat: no-repeat;
+    background-size: cover;
+
+}
+
+.login-right-div {
+    border-top-right-radius: 21px;
+    border-bottom-right-radius: 21px;
+    background-color: rgb(255, 56, 92);
+    text-align: center;
+    align-items: center;
+    justify-content: space-around;
+
+}
+
+.regInfoDiv {
+    position: relative;
+    font-family: Helvetica, sans-serif;
+    left: 0;
+    bottom: -16rem;
+    background-color: rgba(240, 255, 255, 0.6);
+    padding: 10px;
+}
+
+.regInfoDiv>a {
+    text-decoration: none;
+}
+
+.popHelpBtn {
+    width: 2rem;
+    height: 2rem;
+    border-radius: 50%;
+    border: 1px solid #dddddd;
+    border-radius: 2rem;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.adminDiv {
+    box-sizing: border-box;
+    background-color: white;
+    width: fit-content;
+    border: 1px solid #ddd;
+    border-radius: 12px;
+    padding: 24px;
+    box-shadow: rgb(0 0 0 / 12%) 0px 6px 16px;
+}
