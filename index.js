@@ -29,11 +29,9 @@ app.use('images', express.static(__dirname + "/images"));
 // Global configuration access setup
 dotenv.config();
 
-// mongoose.connect("mongodb://127.0.0.1:27017/airbnbClone", function () {
-//     console.log("Successfully connected to database");
-// })
-
-mongoose.connect('mongodb+srv://mosah48868:pxt9baD6HCYNHAk@cluster0.ia2jgkh.mongodb.net/AirbnbClone', { useNewUrlParser: true });
+mongoose.connect("mongodb://127.0.0.1:27017/airbnbClone", function () {
+    console.log("Successfully connected to database");
+})
 
 // Store hotel images
 const storage = multer.diskStorage({
